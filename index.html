@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#FFFCF6">
-<title>濟州島四天三夜旅遊手帳</title>
+<title>濟州島四天三夜旅遊手冊</title>
 <!-- Huninn（jf open 粉圓）：Google Fonts，僅 400 字重；離線或載入失敗時改用下方 --font 的系統字型 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -455,7 +455,7 @@ const Q = {
   tpe: "Taiwan Taoyuan International Airport",
   cju: "Jeju International Airport",
   lotte: "92 Yonghae-ro, Jeju-si, Jeju-do",
-  eunhee: "은희네해장국 40 Wonnohyeong-ro, Jeju-si",
+  cuEco: "CU 제주에코빌리지점",
   hyatt: "Grand Hyatt Jeju",
   seogwipo: "Seogwipo-si, Jeju-do",
   first70: "The First70 Hotel Seogwipo",
@@ -481,8 +481,7 @@ const Q = {
   jungang: "Jeju Jungang Underground Shopping Center",
   chilseong: "Chilseong-ro Shopping Street Jeju",
   lotteMart: "LOTTE Mart Jeju",
-  jejusi: "Jeju-si, Jeju-do",
-  olive: "Olive Young Jeju-si"
+  olive: "올리브영 관덕로 62-1"
 };
 
 const DAYS = [
@@ -494,11 +493,10 @@ const DAYS = [
         maps: [{ label: "桃園機場", q: Q.tpe }] },
       { time: "03:05", end: "06:05", act: "去程：易斯達航空 ZE886", loc: "桃園機場 → 濟州機場", mode: "plane", kind: "flight" },
       { time: "06:05", end: "07:30", act: "入境、領行李", loc: "濟州機場", maps: [{ q: Q.cju }] },
-      { time: "07:30", end: "08:00", act: "取車", loc: "LOTTE Rent-a-Car", maps: [{ q: Q.lotte }],
+      { time: "07:30", end: "08:00", act: "搭接駁車去取車", loc: "LOTTE Rent-a-Car", maps: [{ q: Q.lotte }],
         note: "租車確認信：取車時間 08:00，地點 Jeju Autohouse" },
-      { time: "08:00", end: "08:15", act: "開車前往解酒湯", loc: "濟州恩熙解酒湯 은희네해장국", mode: "car", maps: [{ q: Q.eunhee }] },
-      { time: "08:15", end: "09:00", act: "早餐", loc: "濟州恩熙解酒湯 은희네해장국", maps: [{ q: Q.eunhee }] },
-      { time: "09:00", end: "09:15", act: "開車前往汗蒸幕", loc: "濟州君悅酒店", mode: "car", maps: [{ q: Q.hyatt }] },
+      { time: "08:00", end: "08:15", act: "開車前往君悅停車", loc: "濟州君悅酒店", mode: "car", maps: [{ q: Q.hyatt }] },
+      { time: "08:15", end: "09:15", act: "去便利商店買早餐", loc: "CU 便利商店 씨유 제주에코빌리지점", mode: "walk", maps: [{ q: Q.cuEco }] },
       { time: "09:15", end: "13:00", act: "汗蒸幕、洗澡、休息", loc: "濟州君悅酒店 Korean Jjimjil Spa", maps: [{ q: Q.hyatt }] },
       { time: "13:00", end: "13:45", act: "開車前往貝果店", loc: "濟州倫敦貝果博物館", mode: "car", maps: [{ q: Q.bagel }] },
       { time: "13:45", end: "14:45", act: "午餐：倫敦貝果", loc: "London Bagel Museum 濟州店", maps: [{ q: Q.bagel }] },
@@ -553,7 +551,8 @@ const DAYS = [
       { time: "15:55", end: "16:30", act: "前往飯店、入住", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] },
       { time: "16:30", end: "18:30", act: "逛街或休息", loc: "東門市場周邊", maps: [{ q: Q.dongmun }] },
       { time: "18:30", end: "19:30", act: "晚餐", loc: "宇進解酒湯 우진해장국", maps: [{ q: Q.ujin }] },
-      { time: "19:30", open: true, act: "回飯店休息", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] }
+      { time: "19:30", end: "20:30", act: "Olive Young", loc: "Olive Young 關德路店", mode: "walk", maps: [{ q: Q.olive }] },
+      { time: "20:30", open: true, act: "回飯店休息", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] }
     ],
     stay: { name: "大同酒店 Daedong Hotel", area: "濟州市區", q: Q.daedong }
   },
@@ -568,10 +567,11 @@ const DAYS = [
         maps: [{ label: "中央地下商店街", q: Q.jungang }, { label: "七星路", q: Q.chilseong }] },
       { time: "14:00", end: "14:30", act: "前往超市", loc: "樂天超市濟州店", maps: [{ q: Q.lotteMart }] },
       { time: "14:30", end: "16:00", act: "超市採買、買零食伴手禮", loc: "LOTTE MART Jeju", maps: [{ q: Q.lotteMart }] },
-      { time: "16:00", end: "17:00", act: "採買時間", loc: "濟州市區", maps: [{ q: Q.jejusi }] },
-      { time: "17:00", end: "18:30", act: "晚餐", loc: "濟州市區", maps: [{ q: Q.jejusi }] },
-      { time: "18:30", end: "19:15", act: "最後採買", loc: "七星路、Olive Young",
-        maps: [{ label: "七星路", q: Q.chilseong }, { label: "Olive Young", q: Q.olive }] },
+      { time: "16:00", end: "16:15", act: "搭計程車回市區", loc: "七星路一帶", mode: "taxi", maps: [{ q: Q.chilseong }] },
+      { time: "16:15", end: "17:00", act: "採買時間", loc: "中央地下商店街、七星路一帶",
+        maps: [{ label: "中央地下商店街", q: Q.jungang }, { label: "七星路", q: Q.chilseong }] },
+      { time: "17:00", end: "18:30", act: "晚餐", loc: "舊市區、飯店附近", maps: [{ label: "搜尋飯店附近餐廳", q: "restaurants near Daedong Hotel Jeju" }] },
+      { time: "18:30", end: "19:15", act: "最後採買", loc: "七星路", maps: [{ q: Q.chilseong }] },
       { time: "19:15", end: "19:30", act: "回飯店取行李", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] },
       { time: "19:30", end: "20:00", act: "搭計程車前往機場", loc: "濟州機場", mode: "taxi", maps: [{ q: Q.cju }] },
       { time: "20:00", end: "22:40", act: "報到、安檢、登機", loc: "濟州機場", maps: [{ q: Q.cju }] },
@@ -663,7 +663,7 @@ function tripStatus(now) {
 
 function renderHero() {
   $("heroKicker").textContent = TRIP.tagline;
-  $("heroTitle").innerHTML = `<span class="nowrap">${esc(TRIP.title)}</span><span class="nowrap">旅遊手帳</span>`;
+  $("heroTitle").innerHTML = `<span class="nowrap">${esc(TRIP.title)}</span><span class="nowrap">旅遊手冊</span>`;
   $("heroMeta").innerHTML =
     `<span class="pill">${esc(TRIP.destination)}</span>` +
     `<span class="pill">2026/10/29（四）– 11/1（日）</span>` +
