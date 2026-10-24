@@ -1,0 +1,890 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FFFCF6">
+<title>濟州島四天三夜旅遊手帳</title>
+<!-- Huninn（jf open 粉圓）：Google Fonts，僅 400 字重；離線或載入失敗時改用下方 --font 的系統字型 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Huninn&display=swap">
+<style>
+:root{
+  --paper:#FFFCF6;
+  --ink:#3E3A39;
+  --ink-soft:#6B6563;
+  --coral:#F2A497;
+  --yellow:#F6D27A;
+  --water:#A8D3E6;
+  --green:#B9DAA5;
+  --coral-pale:#FBE3DE;
+  --yellow-pale:#FDF1CF;
+  --water-pale:#E2F1F7;
+  --green-pale:#E6F2DE;
+  --line:3px;
+  --r-lg:28px 24px 30px 22px / 24px 30px 22px 28px;
+  --r-md:18px 16px 20px 15px / 16px 20px 15px 18px;
+  --nav-h:58px;
+  --safe-top:env(safe-area-inset-top, 0px);
+  --font:"Huninn","PingFang TC","Noto Sans TC","Microsoft JhengHei","Heiti TC","Apple SD Gothic Neo","Noto Sans KR","Malgun Gothic",system-ui,sans-serif;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{
+  -webkit-text-size-adjust:100%;
+  scroll-padding-top:calc(var(--nav-h) + var(--safe-top) + 12px);
+}
+@media (prefers-reduced-motion:no-preference){html{scroll-behavior:smooth}}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--font);
+  font-weight:400;
+  font-size:16px;
+  line-height:1.6;
+  padding-top:calc(var(--nav-h) + var(--safe-top));
+  padding-left:env(safe-area-inset-left,0px);
+  padding-right:env(safe-area-inset-right,0px);
+  overflow-x:hidden;
+}
+h1,h2,h3,p{margin:0}
+a{color:inherit}
+button{font:inherit;color:inherit}
+svg{display:block}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+:focus-visible{outline:3px dashed var(--ink);outline-offset:3px}
+
+/* ---------- 固定頂端選單 ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  padding-top:var(--safe-top);
+  background:var(--paper);
+  border-bottom:var(--line) solid var(--ink);
+}
+.nav ul{
+  list-style:none;margin:0 auto;padding:0 10px;
+  max-width:880px;height:var(--nav-h);
+  display:flex;align-items:center;justify-content:space-between;gap:4px;
+}
+.nav a{
+  display:flex;align-items:center;gap:6px;
+  padding:6px 12px;
+  border:var(--line) solid transparent;
+  border-radius:999px;
+  text-decoration:none;
+  font-size:15px;white-space:nowrap;
+  transition:background-color .2s,border-color .2s;
+}
+.nav a svg{width:20px;height:20px;flex:none}
+.nav a[aria-current="true"]{background:var(--yellow);border-color:var(--ink)}
+@media (max-width:480px){
+  .nav ul{padding:0 6px;gap:2px}
+  .nav a{padding:5px 8px;font-size:14px;gap:3px}
+  .nav a svg{display:none}
+}
+
+main{max-width:880px;margin:0 auto;padding:0 16px calc(40px + env(safe-area-inset-bottom,0px))}
+section{padding-top:36px}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.sec-head svg{width:40px;height:40px;flex:none}
+.sec-head h2{font-size:24px;line-height:1.3;font-weight:400}
+.sec-head p{font-size:13px;color:var(--ink-soft)}
+
+.card{
+  background:#fff;
+  border:var(--line) solid var(--ink);
+  border-radius:var(--r-lg);
+  padding:18px;
+}
+.pill{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:1px 10px;
+  border:2px solid var(--ink);border-radius:999px;
+  font-size:13px;line-height:1.6;white-space:nowrap;
+}
+
+/* ---------- Hero ---------- */
+.hero{padding-top:20px}
+.hero-card{
+  background:var(--water-pale);
+  border:var(--line) solid var(--ink);
+  border-radius:var(--r-lg);
+  overflow:hidden;
+}
+.hero-art{width:100%;height:auto;aspect-ratio:360/200;border-bottom:var(--line) solid var(--ink);background:var(--water-pale)}
+.hero-body{padding:18px 18px 22px;background:var(--paper)}
+.hero-kicker{font-size:14px;color:var(--ink-soft)}
+.hero h1{font-size:clamp(28px,7.5vw,40px);line-height:1.25;font-weight:400;margin:4px 0 10px}
+.nowrap{display:inline-block}
+.hero-meta{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px}
+.hero-meta .pill{background:#fff;font-size:14px}
+.countdown{
+  display:flex;align-items:center;gap:14px;
+  padding:12px 16px;
+  background:var(--coral-pale);
+  border:var(--line) solid var(--ink);border-radius:var(--r-md);
+}
+.countdown-num{
+  flex:none;min-width:72px;height:72px;padding:0 8px;
+  display:grid;place-items:center;
+  background:var(--coral);border:var(--line) solid var(--ink);border-radius:50%;
+  font-size:30px;line-height:1;
+}
+.countdown-num small{font-size:13px;display:block;text-align:center;margin-top:2px}
+.countdown-text strong{display:block;font-weight:400;font-size:19px;line-height:1.35}
+.countdown-text span{font-size:13px;color:var(--ink-soft)}
+@media (min-width:720px){
+  .hero-card{display:grid;grid-template-columns:1.1fr 1fr}
+  .hero-art{height:100%;aspect-ratio:auto;border-bottom:0;border-right:var(--line) solid var(--ink)}
+  .hero-body{padding:28px}
+}
+
+/* 插圖輕微動態（僅 transform） */
+.float{animation:float 6s ease-in-out infinite}
+.sway{animation:sway 5s ease-in-out infinite;transform-origin:50% 0;transform-box:fill-box}
+.bob{animation:bob 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translate(0,0)}50%{transform:translate(6px,-6px)}}
+@keyframes sway{0%,100%{transform:rotate(-5deg)}50%{transform:rotate(5deg)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+.paused .float,.paused .sway,.paused .bob{animation-play-state:paused}
+
+/* ---------- 航班＋租車 ---------- */
+.flights{display:grid;gap:16px}
+@media (min-width:720px){.flights{grid-template-columns:1fr 1fr}}
+.flight{padding:0;overflow:hidden}
+.flight-top{
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  padding:10px 16px;border-bottom:var(--line) solid var(--ink);
+}
+.flight.out .flight-top{background:var(--green)}
+.flight.back .flight-top{background:var(--water)}
+.flight-top .dir{font-size:18px}
+.flight-top .no{font-size:15px}
+.flight-route{
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:8px;
+  padding:16px 16px 8px;
+}
+.port .code{font-size:26px;line-height:1.2;letter-spacing:.04em}
+.port .time{font-size:22px;line-height:1.3}
+.port .date{font-size:13px;color:var(--ink-soft)}
+.port .name{font-size:13px;line-height:1.4;margin-top:2px}
+.port.arr{text-align:right}
+.route-mid{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:12px;color:var(--ink-soft);text-align:center}
+.route-mid svg{width:44px;height:24px}
+.next-day{display:inline-block;margin-left:4px;padding:0 6px;font-size:12px;line-height:1.6;background:var(--coral);border:2px solid var(--ink);border-radius:8px;color:var(--ink);vertical-align:2px}
+.flight-foot{padding:4px 16px 14px;font-size:13px;color:var(--ink-soft)}
+.flight-foot p+p{margin-top:2px}
+.car{margin-top:16px;background:var(--yellow-pale)}
+.car h3{font-size:18px;font-weight:400;display:flex;align-items:center;gap:8px}
+.car h3 svg{width:36px;height:24px}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin-top:10px;font-size:14px}
+.kv dt{color:var(--ink-soft)}
+.kv dd{margin:0;overflow-wrap:anywhere}
+.car-legs{display:grid;gap:10px;margin-top:12px}
+@media (min-width:560px){.car-legs{grid-template-columns:1fr 1fr}}
+.car-leg{background:#fff;border:2px solid var(--ink);border-radius:var(--r-md);padding:10px 12px;font-size:14px}
+.car-leg .lbl{display:inline-block;background:var(--yellow);border:2px solid var(--ink);border-radius:8px;padding:0 8px;font-size:13px;margin-bottom:4px}
+.note-small{font-size:12px;color:var(--ink-soft);margin-top:10px;line-height:1.5}
+
+.btn-map{
+  display:inline-flex;align-items:center;gap:6px;
+  margin-top:10px;padding:6px 14px;
+  background:var(--water);border:2px solid var(--ink);border-radius:999px;
+  font-size:14px;text-decoration:none;
+}
+.btn-map svg{width:16px;height:16px}
+
+/* ---------- 每日行程 ---------- */
+.tabs{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:8px;
+  position:sticky;top:calc(var(--nav-h) + var(--safe-top));z-index:10;
+  padding:10px 0;background:var(--paper);
+}
+.tab{
+  display:block;
+  padding:8px 4px;
+  background:#fff;border:var(--line) solid var(--ink);border-radius:var(--r-md);
+  text-align:center;line-height:1.3;text-decoration:none;
+  transition:background-color .2s,transform .2s;
+}
+.tab .d{display:block;font-size:16px}
+.tab .w{display:block;font-size:12px;color:var(--ink-soft)}
+.tab[aria-current="true"]{background:var(--coral);transform:translateY(-2px)}
+.tab[aria-current="true"] .w{color:var(--ink)}
+.tab .today{display:block;font-size:11px;margin-top:2px}
+@media (hover:hover){.tab:hover{background:var(--coral-pale)}.tab[aria-current="true"]:hover{background:var(--coral)}}
+
+/* 四天依序展開；跳轉時預留固定選單＋日期列的高度（--tabs-h 由 JS 依實際高度設定） */
+.day{margin-top:6px;scroll-margin-top:calc(var(--tabs-h, 96px) + 4px)}
+.day + .day{margin-top:64px}
+@media (min-width:640px){.day + .day{margin-top:80px}}
+.day-head{display:flex;align-items:center;gap:14px;padding:14px 16px;background:var(--green-pale)}
+.day-head-text{min-width:0}
+.day-art{flex:none;width:80px;height:80px;overflow:hidden;background:#fff;border:var(--line) solid var(--ink);border-radius:18px}
+.day-art svg{width:100%;height:100%}
+@media (min-width:640px){.day-art{width:96px;height:96px}}
+.day:nth-child(2) .day-head{background:var(--yellow-pale)}
+.day:nth-child(3) .day-head{background:var(--water-pale)}
+.day:nth-child(4) .day-head{background:var(--coral-pale)}
+.day-head .no{display:flex;align-items:center;gap:8px;font-size:14px;color:var(--ink-soft)}
+.day-badge{padding:0 10px;font-size:16px;color:var(--ink);background:#fff;border:2px solid var(--ink);border-radius:999px}
+.day-head h3{font-size:21px;font-weight:400;line-height:1.35;margin-top:6px}
+
+.tl{list-style:none;margin:18px 0 0;padding:0;position:relative}
+.tl::before{
+  content:"";position:absolute;left:9px;top:8px;bottom:8px;
+  border-left:var(--line) dashed var(--ink);
+}
+.tl-item{position:relative;padding:0 0 18px 34px}
+.tl-dot{
+  position:absolute;left:0;top:4px;
+  width:21px;height:21px;border-radius:50%;
+  background:var(--paper);border:var(--line) solid var(--ink);
+}
+.tl-item.k-flight .tl-dot{background:var(--green)}
+.tl-item.k-ferry .tl-dot{background:var(--water)}
+.tl-item.k-move .tl-dot{background:var(--yellow)}
+.tl-time{font-size:15px;line-height:1.4;font-variant-numeric:tabular-nums}
+.tl-time .open{font-size:13px;color:var(--ink-soft);margin-left:2px}
+.tl-box{margin-top:4px;padding:10px 14px;background:#fff;border:2px solid var(--ink);border-radius:var(--r-md)}
+.tl-act{font-size:17px;line-height:1.45;overflow-wrap:anywhere}
+.tl-loc{margin-top:4px;font-size:14px;line-height:1.5;overflow-wrap:anywhere;color:var(--ink-soft)}
+.tl-loc .pin{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:3px}
+.maplink{
+  color:var(--ink);text-decoration:underline;text-decoration-thickness:2px;
+  text-underline-offset:3px;text-decoration-color:var(--coral);
+}
+.map-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.map-chip{
+  display:inline-flex;align-items:center;gap:4px;
+  padding:2px 10px;font-size:13px;text-decoration:none;
+  background:var(--water-pale);border:2px solid var(--ink);border-radius:999px;
+}
+.map-chip svg{width:13px;height:13px}
+.tl-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.t-car{background:var(--yellow)}
+.t-taxi{background:var(--coral)}
+.t-ferry{background:var(--water)}
+.t-plane{background:var(--green)}
+.t-walk{background:var(--green-pale)}
+.tl-stay{
+  margin-top:4px;padding:14px 16px;
+  display:flex;gap:12px;align-items:center;
+  background:var(--yellow-pale);
+  border:var(--line) solid var(--ink);border-radius:var(--r-md);
+}
+.tl-stay svg{width:40px;height:40px;flex:none}
+.tl-stay .lbl{font-size:13px;color:var(--ink-soft)}
+.tl-stay .nm{font-size:18px;line-height:1.35;overflow-wrap:anywhere}
+.tl-stay .ar{font-size:14px}
+@media (min-width:640px){
+  .tl::before{left:131px}
+  .tl-item{display:grid;grid-template-columns:112px 1fr;gap:0 40px;padding-left:0}
+  .tl-dot{left:122px;top:12px}
+  .tl-time{text-align:right;padding-top:10px}
+  .tl-box{margin-top:0}
+  .tl-stay{margin-left:152px}
+}
+
+/* ---------- 住宿 ---------- */
+.stays{display:grid;gap:16px}
+@media (min-width:720px){.stays{grid-template-columns:1fr 1fr}}
+.stay{padding:0;overflow:hidden}
+.stay-top{display:flex;gap:12px;align-items:center;padding:14px 16px;border-bottom:var(--line) solid var(--ink)}
+.stay:nth-child(1) .stay-top{background:var(--coral-pale)}
+.stay:nth-child(2) .stay-top{background:var(--water-pale)}
+.stay-top svg{width:44px;height:44px;flex:none}
+.stay-top h3{font-size:19px;font-weight:400;line-height:1.35;overflow-wrap:anywhere}
+.stay-top p{font-size:13px;color:var(--ink-soft)}
+.stay-body{padding:12px 16px 16px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .tab[aria-current="true"]{transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- 共用 SVG 圖示 -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9H3z" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 20v-5h4v5" fill="none" stroke="#3E3A39" stroke-width="2.4" stroke-linejoin="round"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path d="M2.5 13.5 21 7.5c1.3-.4 1.9 1.2.7 1.8L13 13.6l-3 6.4-2-.6 1-5L4.5 15.6z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="4" fill="#fff" stroke="#3E3A39" stroke-width="2.4"/><path d="M3 10h18" stroke="#3E3A39" stroke-width="2.4"/><rect x="3" y="5" width="18" height="5" rx="2" fill="#F2A497" stroke="#3E3A39" stroke-width="2.4"/><path d="M8 3v4M16 3v4" stroke="#3E3A39" stroke-width="2.4" stroke-linecap="round"/></symbol>
+    <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18V7M3 13h18v5M21 18v-3" fill="none" stroke="#3E3A39" stroke-width="2.4" stroke-linecap="round"/><rect x="5" y="9" width="5" height="4" rx="2" fill="#fff" stroke="#3E3A39" stroke-width="2.2"/><path d="M11 13V10.5c0-.8.7-1.5 1.5-1.5H18a3 3 0 0 1 3 3v1z" fill="#F2A497" stroke="#3E3A39" stroke-width="2.2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-7 7-12a7 7 0 0 0-14 0c0 5 7 12 7 12z" fill="#F2A497" stroke="#3E3A39" stroke-width="2.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" fill="#fff" stroke="#3E3A39" stroke-width="2.2"/></symbol>
+    <symbol id="i-car" viewBox="0 0 36 24"><path d="M4 16v-4l4-6h15l6 6h3v4z" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 7.5h5v4.5H8.5zM18 7.5h4l4 4.5h-8z" fill="#E2F1F7" stroke="#3E3A39" stroke-width="2"/><circle cx="10" cy="17" r="3.2" fill="#fff" stroke="#3E3A39" stroke-width="2.4"/><circle cx="26" cy="17" r="3.2" fill="#fff" stroke="#3E3A39" stroke-width="2.4"/></symbol>
+    <symbol id="i-house" viewBox="0 0 44 44"><path d="M8 20 22 8l14 12v16H8z" fill="#fff" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/><path d="M5 22 22 7l17 15" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="18" y="25" width="8" height="11" rx="2" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.6"/><circle cx="22" cy="18" r="3" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.4"/></symbol>
+  </defs>
+</svg>
+
+<nav class="nav" aria-label="主選單">
+  <ul>
+    <li><a href="#home" data-nav="home"><svg aria-hidden="true"><use href="#i-home"/></svg>首頁</a></li>
+    <li><a href="#days" data-nav="days"><svg aria-hidden="true"><use href="#i-cal"/></svg>行程</a></li>
+    <li><a href="#flights" data-nav="flights"><svg aria-hidden="true"><use href="#i-plane"/></svg>航班</a></li>
+    <li><a href="#stay" data-nav="stay"><svg aria-hidden="true"><use href="#i-bed"/></svg>住宿</a></li>
+  </ul>
+</nav>
+
+<main>
+  <!-- ========== 首頁 ========== -->
+  <section id="home" class="hero" data-section>
+    <div class="hero-card">
+      <svg class="hero-art" id="heroArt" viewBox="0 0 360 200" role="img" aria-label="濟州島插圖：城山日出峰、大海、渡輪、飛機與橘子">
+        <circle cx="300" cy="46" r="20" fill="#F6D27A" stroke="#3E3A39" stroke-width="3"/>
+        <g class="float">
+          <path d="M40 46 98 28c4-1 6 4 2 6l-28 13-9 19-6-2 3-15-15 6z" fill="#fff" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M22 52q8-4 14-2" fill="none" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 7"/>
+        </g>
+        <path d="M150 128 176 76q34-12 68 0l28 52z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M184 78q26 10 52 0" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+        <path d="M196 98v14M214 92v20M232 100v12" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round" opacity=".5"/>
+        <path d="M0 128q22-10 45 0t45 0 45 0 45 0 45 0 45 0 45 0 45 0V420H0z" fill="#A8D3E6" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+        <path d="M30 156q10-6 20 0M250 168q10-6 20 0M150 182q10-6 20 0" fill="none" stroke="#3E3A39" stroke-width="2.5" stroke-linecap="round"/>
+        <g class="bob">
+          <path d="M70 140h56l-8 14H78z" fill="#fff" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/>
+          <rect x="82" y="128" width="30" height="12" rx="3" fill="#F2A497" stroke="#3E3A39" stroke-width="2.6"/>
+          <circle cx="92" cy="134" r="2" fill="#3E3A39"/><circle cx="102" cy="134" r="2" fill="#3E3A39"/>
+        </g>
+        <g transform="translate(286 132)">
+          <g class="sway">
+            <path d="M0 0v10" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/>
+            <circle cx="0" cy="26" r="17" fill="#F6B57A" stroke="#3E3A39" stroke-width="3"/>
+            <path d="M1 8c5-7 13-6 16-3-4 5-11 6-16 3z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="2.6" stroke-linejoin="round"/>
+            <circle cx="-6" cy="24" r="2" fill="#3E3A39"/><circle cx="6" cy="24" r="2" fill="#3E3A39"/>
+            <path d="M-3 30q3 2.5 6 0" fill="none" stroke="#3E3A39" stroke-width="2.4" stroke-linecap="round"/>
+          </g>
+        </g>
+      </svg>
+      <div class="hero-body">
+        <p class="hero-kicker" id="heroKicker"></p>
+        <h1 id="heroTitle"></h1>
+        <div class="hero-meta" id="heroMeta"></div>
+        <div class="countdown" role="status" aria-live="polite">
+          <div class="countdown-num" id="cdNum"></div>
+          <div class="countdown-text"><strong id="cdText"></strong><span id="cdSub"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== 每日行程 ========== -->
+  <section id="days" data-section>
+    <div class="sec-head">
+      <svg aria-hidden="true"><use href="#i-cal"/></svg>
+      <div><h2>每日行程</h2></div>
+    </div>
+    <nav class="tabs" aria-label="跳到某一天" id="dayTabs"></nav>
+    <div id="dayList"></div>
+  </section>
+
+  <!-- ========== 航班＋租車 ========== -->
+  <section id="flights" data-section>
+    <div class="sec-head">
+      <svg aria-hidden="true"><use href="#i-plane"/></svg>
+      <div><h2>航班與租車</h2><p>所有時間皆為當地時間（台灣 UTC+8／韓國 UTC+9）</p></div>
+    </div>
+    <div class="flights" id="flightList"></div>
+    <div class="card car" id="carCard"></div>
+  </section>
+
+  <!-- ========== 住宿 ========== -->
+  <section id="stay" data-section>
+    <div class="sec-head">
+      <svg aria-hidden="true"><use href="#i-house"/></svg>
+      <div><h2>住宿資訊</h2></div>
+    </div>
+    <div class="stays" id="stayList"></div>
+  </section>
+</main>
+
+<script>
+"use strict";
+/* =====================================================================
+   行程資料（依原始資料整理；修改行程只需改這裡）
+   - time: 開始時間；end: 結束時間；open: true 表示「起」；endNextDay: 結束於隔日
+   - loc: 原始地點文字（照原樣顯示）
+   - maps: Google Maps 搜尋關鍵字；label 省略時，地點文字本身就是連結
+   - mode: car 開車｜taxi 計程車｜ferry 渡輪｜plane 飛機
+   ===================================================================== */
+const TRIP = {
+  title: "濟州島四天三夜",
+  tagline: "生活好難，還好可以出去玩",
+  destination: "韓國・濟州島",
+  startDate: "2026-10-29",
+  endDate: "2026-11-01",
+  // 倒數以台灣時間 10/29 為出發日；旅程在回程航班抵達桃園（11/2 00:05 台灣時間）後結束
+  tripStart: "2026-10-29T00:00:00+08:00",
+  tripEnd: "2026-11-02T00:05:00+08:00"
+};
+
+const FLIGHTS = [
+  {
+    dir: "去程", cls: "out", airline: "易斯達航空 Eastar Jet", no: "ZE886", duration: "2 小時 0 分鐘",
+    dep: { code: "TPE", name: "臺灣桃園國際機場", date: "2026/10/29（四）", time: "03:05" },
+    arr: { code: "CJU", name: "濟州國際機場", date: "2026/10/29（四）", time: "06:05", nextDay: false }
+  },
+  {
+    dir: "回程", cls: "back", airline: "易斯達航空 Eastar Jet", no: "ZE885", duration: "2 小時 25 分鐘",
+    dep: { code: "CJU", name: "濟州國際機場", date: "2026/11/1（日）", time: "22:40" },
+    arr: { code: "TPE", name: "臺灣桃園國際機場", date: "2026/11/2（一）", time: "00:05", nextDay: true }
+  }
+];
+const BAGGAGE = [
+  "登機行李：每人 1 件，每件 10kg，長＋寬＋高不超過 55×40×20 公分",
+  "託運行李：每人 1 件，每件 15kg，長＋寬＋高不超過 203 公分"
+];
+
+const CAR = {
+  company: "LOTTE Rent-a-Car 樂天租車",
+  type: "Economy",
+  model: "MORNING(G)",
+  cdw: "Collision Damage Waiver with 0 KRW Excess",
+  total: "163,300 KRW",
+  location: "Jeju Autohouse",
+  address: "92, Yonghae-ro, Jeju-si, Jeju-do, Korea",
+  hours: "06:00–23:00",
+  pickup: "2026/10/29（四）08:00",
+  dropoff: "2026/10/31（六）20:00",
+  contact: "+82-2-1588-1230"
+};
+
+const Q = {
+  tpe: "Taiwan Taoyuan International Airport",
+  cju: "Jeju International Airport",
+  lotte: "92 Yonghae-ro, Jeju-si, Jeju-do",
+  eunhee: "은희네해장국 40 Wonnohyeong-ro, Jeju-si",
+  hyatt: "Grand Hyatt Jeju",
+  seogwipo: "Seogwipo-si, Jeju-do",
+  first70: "The First70 Hotel Seogwipo",
+  olle: "Seogwipo Maeil Olle Market",
+  ppolsal: "뽈살집 서귀포",
+  bagel: "London Bagel Museum Jeju",
+  audrant: "Audrant Bakery 552-3 Johamhaean-ro, Jocheon-eup",
+  dajeong: "다정이네김밥 올레시장",
+  ilchulbong: "Seongsan Ilchulbong",
+  seongsan: "Seongsan Port Jeju",
+  udo: "Udo Island Jeju",
+  udoHaenyeo: "우도 해녀식당",
+  osulloc: "Osulloc Tea Museum",
+  jejudang: "제주당 927 Wolgak-ro, Aewol-eup",
+  aewol: "Aewol Coastal Road Jeju",
+  gwanghae: "제주광해 애월본점",
+  mumu: "무무제주",
+  daedong: "Daedong Hotel Jeju",
+  dongmun: "Jeju Dongmun Traditional Market",
+  badang: "바당국수 서귀포",
+  ujin: "우진해장국 제주",
+  dotoree: "도토리키친 제주",
+  jungang: "Jeju Jungang Underground Shopping Center",
+  chilseong: "Chilseong-ro Shopping Street Jeju",
+  lotteMart: "LOTTE Mart Jeju",
+  jejusi: "Jeju-si, Jeju-do",
+  olive: "Olive Young Jeju-si"
+};
+
+const DAYS = [
+  {
+    date: "2026-10-29", md: "10/29", wd: "四",
+    title: "抵達濟州・汗蒸幕・倫敦貝果",
+    items: [
+      { time: "00:00", end: "00:20", act: "出門搭計程車前往機場", loc: "星河社區 → 桃園機場", mode: "taxi",
+        maps: [{ label: "桃園機場", q: Q.tpe }] },
+      { time: "03:05", end: "06:05", act: "去程：易斯達航空 ZE886", loc: "桃園機場 → 濟州機場", mode: "plane", kind: "flight" },
+      { time: "06:05", end: "07:30", act: "入境、領行李", loc: "濟州機場", maps: [{ q: Q.cju }] },
+      { time: "07:30", end: "08:00", act: "取車", loc: "LOTTE Rent-a-Car", maps: [{ q: Q.lotte }],
+        note: "租車確認信：取車時間 08:00，地點 Jeju Autohouse" },
+      { time: "08:00", end: "08:15", act: "開車前往解酒湯", loc: "濟州恩熙解酒湯 은희네해장국", mode: "car", maps: [{ q: Q.eunhee }] },
+      { time: "08:15", end: "09:00", act: "早餐", loc: "濟州恩熙解酒湯 은희네해장국", maps: [{ q: Q.eunhee }] },
+      { time: "09:00", end: "09:15", act: "開車前往汗蒸幕", loc: "濟州君悅酒店", mode: "car", maps: [{ q: Q.hyatt }] },
+      { time: "09:15", end: "13:00", act: "汗蒸幕、洗澡、休息", loc: "濟州君悅酒店 Korean Jjimjil Spa", maps: [{ q: Q.hyatt }] },
+      { time: "13:00", end: "13:45", act: "開車前往貝果店", loc: "濟州倫敦貝果博物館", mode: "car", maps: [{ q: Q.bagel }] },
+      { time: "13:45", end: "14:45", act: "午餐：倫敦貝果", loc: "London Bagel Museum 濟州店", maps: [{ q: Q.bagel }] },
+      { time: "14:45", end: "15:00", act: "開車前往 Audrant Bakery 麵包店", loc: "Audrant Bakery", mode: "car", maps: [{ q: Q.audrant }] },
+      { time: "15:00", end: "15:30", act: "買大蒜麵包", loc: "Audrant Bakery", maps: [{ q: Q.audrant }] },
+      { time: "15:30", end: "16:45", act: "開車前往西歸浦", loc: "西歸浦市區", mode: "car", maps: [{ q: Q.seogwipo }] },
+      { time: "16:45", end: "17:15", act: "入住、休息", loc: "The First70 Hotel", maps: [{ q: Q.first70 }] },
+      { time: "17:15", end: "18:45", act: "逛市場", loc: "西歸浦每日偶來市場", maps: [{ q: Q.olle }] },
+      { time: "18:45", end: "20:15", act: "晚餐：黑豬肉", loc: "뽈살집", maps: [{ q: Q.ppolsal }] },
+      { time: "20:15", open: true, act: "回飯店休息", loc: "The First70 Hotel", maps: [{ q: Q.first70 }] }
+    ],
+    stay: { name: "第一70飯店 The First70 Hotel", area: "西歸浦", q: Q.first70 }
+  },
+  {
+    date: "2026-10-30", md: "10/30", wd: "五",
+    title: "城山日出峰・牛島",
+    items: [
+      { time: "08:00", end: "09:00", act: "早餐", loc: "多情家紫菜飯捲 다정이네김밥", mode: "walk", maps: [{ q: Q.dajeong }] },
+      { time: "09:00", end: "10:00", act: "開車前往城山日出峰", loc: "城山日出峰", mode: "car", maps: [{ q: Q.ilchulbong }] },
+      { time: "10:00", end: "11:30", act: "登城山日出峰", loc: "城山日出峰", maps: [{ q: Q.ilchulbong }] },
+      { time: "11:30", end: "11:40", act: "開車前往港口", loc: "城山港", mode: "car", maps: [{ q: Q.seongsan }] },
+      { time: "11:40", end: "12:00", act: "購票、候船", loc: "城山港", maps: [{ q: Q.seongsan }] },
+      { time: "12:00", end: "12:30", act: "搭船前往牛島", loc: "城山港 → 牛島", mode: "ferry", kind: "ferry", maps: [{ label: "牛島", q: Q.udo }] },
+      { time: "12:30", end: "13:15", act: "海岸景點、拍照", loc: "牛島", maps: [{ q: Q.udo }] },
+      { time: "13:15", end: "14:00", act: "午餐：海鮮料理", loc: "牛島海女餐廳", maps: [{ q: Q.udoHaenyeo }] },
+      { time: "14:00", end: "14:30", act: "花生冰淇淋", loc: "牛島", maps: [{ q: Q.udo }] },
+      { time: "14:30", end: "15:30", act: "海岸景點、自由活動", loc: "牛島", maps: [{ q: Q.udo }] },
+      { time: "15:30", end: "16:00", act: "搭船返回", loc: "牛島 → 城山港", mode: "ferry", kind: "ferry", maps: [{ label: "城山港", q: Q.seongsan }] },
+      { time: "16:00", end: "17:00", act: "開車返回飯店", loc: "西歸浦", mode: "car", maps: [{ q: Q.seogwipo }] },
+      { time: "18:00", end: "19:00", act: "晚餐：韓式湯飯或麵食", loc: "바당국수", maps: [{ q: Q.badang }] },
+      { time: "19:00", open: true, act: "回飯店休息", loc: "The First70 Hotel", maps: [{ q: Q.first70 }] }
+    ],
+    stay: { name: "第一70飯店 The First70 Hotel", area: "西歸浦", q: Q.first70 }
+  },
+  {
+    date: "2026-10-31", md: "10/31", wd: "六",
+    title: "茶博物館・涯月海岸・還車",
+    items: [
+      { time: "08:00", end: "09:00", act: "早餐、退房", loc: "The First70 Hotel", maps: [{ q: Q.first70 }] },
+      { time: "09:00", end: "10:00", act: "開車前往茶博物館", loc: "O’Sulloc 茶博物館", mode: "car", maps: [{ q: Q.osulloc }] },
+      { time: "10:00", end: "11:15", act: "參觀、喝茶、吃甜點", loc: "O’Sulloc 茶博物館", maps: [{ q: Q.osulloc }] },
+      { time: "11:15", end: "11:30", act: "開車前往濟州堂", loc: "濟州堂 제주당", mode: "car", maps: [{ q: Q.jejudang }] },
+      { time: "11:30", end: "12:05", act: "麵包、咖啡", loc: "濟州堂 제주당", maps: [{ q: Q.jejudang }] },
+      { time: "12:05", end: "12:20", act: "開車前往可愛紀念品店", loc: "무무제주 Mumu Jeju", mode: "car", maps: [{ q: Q.mumu }] },
+      { time: "12:20", end: "12:50", act: "可愛紀念品店", loc: "무무제주 Mumu Jeju", maps: [{ q: Q.mumu }] },
+      { time: "12:50", end: "13:05", act: "開車前往涯月", loc: "涯月海岸", mode: "car", maps: [{ q: Q.aewol }] },
+      { time: "13:05", end: "14:05", act: "午餐：整套帶魚料理", loc: "제주광해 애월본점", maps: [{ q: Q.gwanghae }] },
+      { time: "14:05", end: "14:50", act: "海岸散步、拍照", loc: "涯月海岸", maps: [{ q: Q.aewol }] },
+      { time: "14:50", end: "15:10", act: "開車前往還車處", loc: "LOTTE Rent-a-Car", mode: "car", maps: [{ q: Q.lotte }] },
+      { time: "15:10", end: "15:55", act: "加油、還車", loc: "LOTTE Rent-a-Car Auto House", maps: [{ q: Q.lotte }],
+        note: "租車確認信：最晚還車時間 10/31 20:00" },
+      { time: "15:55", end: "16:30", act: "前往飯店、入住", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] },
+      { time: "16:30", end: "18:30", act: "逛街或休息", loc: "東門市場周邊", maps: [{ q: Q.dongmun }] },
+      { time: "18:30", end: "19:30", act: "晚餐", loc: "宇進解酒湯 우진해장국", maps: [{ q: Q.ujin }] },
+      { time: "19:30", open: true, act: "回飯店休息", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] }
+    ],
+    stay: { name: "大同酒店 Daedong Hotel", area: "濟州市區", q: Q.daedong }
+  },
+  {
+    date: "2026-11-01", md: "11/1", wd: "日",
+    title: "濟州市區購物・返台",
+    items: [
+      { time: "09:30", end: "11:00", act: "起床、早餐、整理行李", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] },
+      { time: "11:00", end: "12:00", act: "午餐：柑橘蕎麥麵", loc: "도토리키친 Dotoree Kitchen", maps: [{ q: Q.dotoree }] },
+      { time: "12:00", end: "13:00", act: "市場採買、伴手禮", loc: "東門市場", maps: [{ q: Q.dongmun }] },
+      { time: "13:00", end: "14:00", act: "逛街、購物", loc: "中央地下商店街、七星路",
+        maps: [{ label: "中央地下商店街", q: Q.jungang }, { label: "七星路", q: Q.chilseong }] },
+      { time: "14:00", end: "14:30", act: "前往超市", loc: "樂天超市濟州店", maps: [{ q: Q.lotteMart }] },
+      { time: "14:30", end: "16:00", act: "超市採買、買零食伴手禮", loc: "LOTTE MART Jeju", maps: [{ q: Q.lotteMart }] },
+      { time: "16:00", end: "17:00", act: "採買時間", loc: "濟州市區", maps: [{ q: Q.jejusi }] },
+      { time: "17:00", end: "18:30", act: "晚餐", loc: "濟州市區", maps: [{ q: Q.jejusi }] },
+      { time: "18:30", end: "19:15", act: "最後採買", loc: "七星路、Olive Young",
+        maps: [{ label: "七星路", q: Q.chilseong }, { label: "Olive Young", q: Q.olive }] },
+      { time: "19:15", end: "19:30", act: "回飯店取行李", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] },
+      { time: "19:30", end: "20:00", act: "搭計程車前往機場", loc: "濟州機場", mode: "taxi", maps: [{ q: Q.cju }] },
+      { time: "20:00", end: "22:40", act: "報到、安檢、登機", loc: "濟州機場", maps: [{ q: Q.cju }] },
+      { time: "22:40", end: "00:05", endNextDay: "11/2", act: "回程：易斯達航空 ZE885", loc: "濟州機場 → 桃園機場", mode: "plane", kind: "flight" }
+    ],
+    stay: { none: true, name: "返台，溫暖的家", area: "11/2 凌晨抵達桃園機場" }
+  }
+];
+
+const STAYS = [
+  { name: "第一70飯店 The First70 Hotel", area: "西歸浦", checkIn: "2026/10/29（四）", checkOut: "2026/10/31（六）", nights: "2 晚", q: Q.first70 },
+  { name: "大同酒店 Daedong Hotel", area: "濟州市區", checkIn: "2026/10/31（六）", checkOut: "2026/11/1（日）", nights: "1 晚", q: Q.daedong }
+];
+
+const MODE_LABEL = { car: "開車", taxi: "計程車", ferry: "渡輪", plane: "飛機", walk: "步行" };
+const CN_NUM = "一二三四五六七八九十";
+const dayName = (i) => "第" + CN_NUM[i] + "天";
+
+/* 每日標題卡小插圖（80×80，動態只用 transform，畫面外暫停） */
+const INK = 'stroke="#3E3A39" stroke-width="3" stroke-linejoin="round" stroke-linecap="round"';
+const SEA = (y) => `<path d="M-2 ${y}q10-6 21 0t21 0 21 0 21 0V84H-2z" fill="#A8D3E6" ${INK}/>`;
+const DAY_ART = [
+  // 第一天：抵達濟州（飛機飛過海面）
+  `<rect width="80" height="80" fill="#E2F1F7"/>
+   <path d="M12 26a6 6 0 0 1 11-3 5 5 0 0 1 8 4H12z" fill="#fff" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+   ${SEA(58)}
+   <g class="float"><path d="M20 46 56 33c3-1 4 3 1 4L41 44l-5 11-4-1 2-9-9 3z" fill="#fff" ${INK}/></g>`,
+  // 第二天：城山日出峰與牛島渡輪
+  `<rect width="80" height="80" fill="#E2F1F7"/>
+   <circle cx="62" cy="18" r="8" fill="#F6D27A" ${INK}/>
+   <path d="M8 56 18 34q12-6 24 0l10 22z" fill="#B9DAA5" ${INK}/>
+   <path d="M21 35q9 4 18 0" fill="none" ${INK}/>
+   ${SEA(56)}
+   <g class="bob"><path d="M44 63h26l-4 7H48z" fill="#fff" ${INK}/><rect x="51" y="55" width="12" height="8" rx="2" fill="#F2A497" ${INK}/></g>`,
+  // 第三天：O'Sulloc 綠茶
+  `<rect width="80" height="80" fill="#E6F2DE"/>
+   <path d="M-2 68q20-8 42 0t42 0V84H-2z" fill="#B9DAA5" ${INK}/>
+   <path d="M18 60h40" fill="none" ${INK}/>
+   <path d="M22 36h30v8a15 15 0 0 1-30 0z" fill="#fff" ${INK}/>
+   <path d="M26 40h22" fill="none" stroke="#B9DAA5" stroke-width="4" stroke-linecap="round"/>
+   <path d="M52 39h3a5 5 0 0 1 0 10h-4" fill="none" ${INK}/>
+   <g class="sway"><path d="M34 12c9-5 16-1 17 6-8 4-15 1-17-6z" fill="#B9DAA5" ${INK}/></g>`,
+  // 第四天：市區購物（購物袋與橘子）
+  `<rect width="80" height="80" fill="#FBE3DE"/>
+   <path d="M30 34v-5a8 8 0 0 1 16 0v5" fill="none" ${INK}/>
+   <path d="M18 34h38l-3 34H21z" fill="#F2A497" ${INK}/>
+   <g class="sway"><circle cx="56" cy="34" r="10" fill="#F6B57A" ${INK}/>
+     <path d="M56 24c3-5 9-5 11-2-3 4-8 5-11 2z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
+     <circle cx="52" cy="34" r="1.5" fill="#3E3A39"/><circle cx="60" cy="34" r="1.5" fill="#3E3A39"/></g>`
+];
+
+/* ===================== 工具 ===================== */
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const mapUrl = (q) => "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(q);
+const icon = (id, cls) => `<svg class="${cls || ""}" aria-hidden="true"><use href="#${id}"/></svg>`;
+
+/* 取得某時區的日期字串 YYYY-MM-DD；不支援時區時退回裝置時間 */
+function ymdIn(date, tz) {
+  try {
+    return new Intl.DateTimeFormat("en-CA", { timeZone: tz, year: "numeric", month: "2-digit", day: "2-digit" }).format(date);
+  } catch (e) {
+    const p = (n) => String(n).padStart(2, "0");
+    return `${date.getFullYear()}-${p(date.getMonth() + 1)}-${p(date.getDate())}`;
+  }
+}
+const dayIndex = (ymd) => { const [y, m, d] = ymd.split("-").map(Number); return Math.round(Date.UTC(y, m - 1, d) / 864e5); };
+
+/* 測試用：網址加 ?now=2026-10-30T10:00:00+09:00 可模擬當下時間 */
+function getNow() {
+  const p = new URLSearchParams(location.search).get("now");
+  const t = p ? new Date(p) : null;
+  return t && !isNaN(t) ? t : new Date();
+}
+
+/* ===================== Hero／倒數 ===================== */
+function tripStatus(now) {
+  const start = new Date(TRIP.tripStart), end = new Date(TRIP.tripEnd);
+  if (now < start) {
+    const diff = dayIndex(TRIP.startDate) - dayIndex(ymdIn(now, "Asia/Taipei"));
+    return { phase: "before", days: Math.max(diff, 0) };
+  }
+  if (now < end) {
+    const d = dayIndex(ymdIn(now, "Asia/Seoul")) - dayIndex(TRIP.startDate) + 1;
+    return { phase: "during", day: Math.min(Math.max(d, 1), DAYS.length), homebound: d > DAYS.length };
+  }
+  return { phase: "after" };
+}
+
+function renderHero() {
+  $("heroKicker").textContent = TRIP.tagline;
+  $("heroTitle").innerHTML = `<span class="nowrap">${esc(TRIP.title)}</span><span class="nowrap">旅遊手帳</span>`;
+  $("heroMeta").innerHTML =
+    `<span class="pill">${esc(TRIP.destination)}</span>` +
+    `<span class="pill">2026/10/29（四）– 11/1（日）</span>` +
+    `<span class="pill">去程 ZE886・回程 ZE885</span>`;
+  updateCountdown();
+}
+
+function updateCountdown() {
+  const s = tripStatus(getNow());
+  const num = $("cdNum"), text = $("cdText"), sub = $("cdSub");
+  if (s.phase === "before") {
+    if (s.days === 0) {
+      num.innerHTML = "GO";
+      text.textContent = "今天出發！";
+    } else {
+      num.innerHTML = `${s.days}<small>天</small>`;
+      text.textContent = s.days === 1 ? "明天就出發囉！" : `距離出發還有 ${s.days} 天`;
+    }
+    sub.textContent = "2026/10/29（四）03:05 桃園起飛";
+  } else if (s.phase === "during") {
+    num.innerHTML = `<small>第</small>${CN_NUM[s.day - 1]}<small>天</small>`;
+    text.textContent = s.homebound ? "回程中，即將抵達桃園" : `旅程進行中・${dayName(s.day - 1)}`;
+    sub.textContent = s.homebound ? "預計 11/2（一）00:05 抵達桃園" : `今日主題：${DAYS[s.day - 1].title}`;
+  } else {
+    num.innerHTML = "♡";
+    text.textContent = "旅程已結束，歡迎回家！";
+    sub.textContent = "2026/10/29 – 11/2 濟州島之旅";
+  }
+}
+
+/* ===================== 航班＋租車 ===================== */
+function renderFlights() {
+  $("flightList").innerHTML = FLIGHTS.map((f) => `
+    <article class="card flight ${f.cls}">
+      <div class="flight-top"><span class="dir">${esc(f.dir)}</span><span class="no">${esc(f.airline)}・${esc(f.no)}</span></div>
+      <div class="flight-route">
+        <div class="port">
+          <div class="code">${esc(f.dep.code)}</div>
+          <div class="time">${esc(f.dep.time)}</div>
+          <div class="date">${esc(f.dep.date)}</div>
+          <div class="name">${esc(f.dep.name)}</div>
+        </div>
+        <div class="route-mid">${icon("i-plane")}<span>${esc(f.duration)}</span></div>
+        <div class="port arr">
+          <div class="code">${esc(f.arr.code)}</div>
+          <div class="time">${esc(f.arr.time)}${f.arr.nextDay ? '<span class="next-day">隔日</span>' : ""}</div>
+          <div class="date">${esc(f.arr.date)}</div>
+          <div class="name">${esc(f.arr.name)}</div>
+        </div>
+      </div>
+      <div class="flight-foot">${BAGGAGE.map((b) => `<p>${esc(b)}</p>`).join("")}</div>
+    </article>`).join("");
+
+  $("carCard").innerHTML = `
+    <h3>${icon("i-car")}${esc(CAR.company)}</h3>
+    <dl class="kv">
+      <dt>車型</dt><dd>${esc(CAR.type)}・${esc(CAR.model)}</dd>
+      <dt>保險</dt><dd>${esc(CAR.cdw)}</dd>
+      <dt>總金額</dt><dd>${esc(CAR.total)}</dd>
+      <dt>客服</dt><dd><a href="tel:${esc(CAR.contact.replace(/-/g, ""))}">${esc(CAR.contact)}</a></dd>
+    </dl>
+    <div class="car-legs">
+      <div class="car-leg"><span class="lbl">取車</span><div>${esc(CAR.pickup)}</div><div>${esc(CAR.location)}</div></div>
+      <div class="car-leg"><span class="lbl">還車</span><div>${esc(CAR.dropoff)}</div><div>${esc(CAR.location)}</div></div>
+    </div>
+    <p class="note-small">地址：${esc(CAR.address)}・營業時間 ${esc(CAR.hours)}</p>
+    <a class="btn-map" href="${mapUrl(Q.lotte)}" target="_blank" rel="noopener">${icon("i-pin")}在 Google Maps 開啟取還車地點</a>`;
+}
+
+/* ===================== 每日行程（四天依序展開） ===================== */
+function renderTabs(todayIdx) {
+  $("dayTabs").innerHTML = DAYS.map((d, i) => `
+    <a class="tab" href="#day-${i + 1}" id="tab-${i}" data-day="${i}">
+      <span class="d">${dayName(i)}</span>
+      <span class="w">${esc(d.md)}</span>
+      <span class="w">週${esc(d.wd)}</span>
+      ${i === todayIdx ? '<span class="today">● 今天</span>' : ""}
+    </a>`).join("");
+}
+
+function timeHtml(it) {
+  let h = esc(it.time);
+  if (it.end) h += `–${esc(it.end)}`;
+  if (it.endNextDay) h += `<span class="next-day">隔日 ${esc(it.endNextDay)}</span>`;
+  if (it.open) h += `<span class="open">起</span>`;
+  return h;
+}
+
+function locHtml(it) {
+  const maps = it.maps || [];
+  if (maps.length === 1 && !maps[0].label) {
+    return `<p class="tl-loc"><a class="maplink" href="${mapUrl(maps[0].q)}" target="_blank" rel="noopener" aria-label="在 Google Maps 開啟 ${esc(it.loc)}">${icon("i-pin", "pin")}${esc(it.loc)}</a></p>`;
+  }
+  const chips = maps.length
+    ? `<div class="map-chips">${maps.map((m) => `<a class="map-chip" href="${mapUrl(m.q)}" target="_blank" rel="noopener">${icon("i-pin")}${esc(m.label)}</a>`).join("")}</div>`
+    : "";
+  return `<p class="tl-loc">${icon("i-pin", "pin")}${esc(it.loc)}</p>${chips}`;
+}
+
+function itemHtml(it) {
+  const kind = it.kind || (it.mode ? "move" : "");
+  const tags = [];
+  if (it.mode) tags.push(`<span class="pill t-${it.mode}">${MODE_LABEL[it.mode]}</span>`);
+  return `
+    <li class="tl-item ${kind ? "k-" + kind : ""}">
+      <span class="tl-dot" aria-hidden="true"></span>
+      <div class="tl-time">${timeHtml(it)}</div>
+      <div class="tl-box">
+        <p class="tl-act">${esc(it.act)}</p>
+        ${locHtml(it)}
+        ${tags.length ? `<div class="tl-tags">${tags.join("")}</div>` : ""}
+        ${it.note ? `<p class="note-small" style="margin-top:6px">${esc(it.note)}</p>` : ""}
+      </div>
+    </li>`;
+}
+
+function dayHtml(d, i) {
+  const st = d.stay;
+  const stayHtml = st.none
+    ? `<div class="tl-stay">${icon("i-plane")}<div><div class="lbl">住宿</div><div class="nm">${esc(st.name)}</div><div class="ar">${esc(st.area)}</div></div></div>`
+    : `<div class="tl-stay">${icon("i-bed")}<div><div class="lbl">今晚住宿</div><div class="nm">${esc(st.name)}</div><div class="ar">${esc(st.area)}・<a class="maplink" href="${mapUrl(st.q)}" target="_blank" rel="noopener">開啟地圖</a></div></div></div>`;
+  return `
+    <article class="day" id="day-${i + 1}" aria-labelledby="day-${i + 1}-h">
+      <div class="card day-head">
+        <div class="day-art paused" aria-hidden="true"><svg viewBox="0 0 80 80">${DAY_ART[i] || ""}</svg></div>
+        <div class="day-head-text">
+          <p class="no"><span class="day-badge">${dayName(i)}</span>${esc(d.md)}（${esc(d.wd)}）</p>
+          <h3 id="day-${i + 1}-h">${d.title.split("・").map((s) => `<span class="nowrap">${esc(s)}</span>`).join("・")}</h3>
+        </div>
+      </div>
+      <ol class="tl">${d.items.map(itemHtml).join("")}</ol>
+      ${stayHtml}
+    </article>`;
+}
+
+function initDays() {
+  const s = tripStatus(getNow());
+  const todayIdx = s.phase === "during" ? s.day - 1 : -1;
+  renderTabs(todayIdx);
+  $("dayList").innerHTML = DAYS.map(dayHtml).join("");
+
+  const tabs = $("dayTabs");
+  const tabEls = [...tabs.querySelectorAll(".tab")];
+  const setCurrent = (i) => tabEls.forEach((t, j) => t.setAttribute("aria-current", j === i ? "true" : "false"));
+  setCurrent(todayIdx >= 0 ? todayIdx : 0);
+  tabs.addEventListener("click", (e) => {
+    const t = e.target.closest(".tab");
+    if (t) setCurrent(Number(t.dataset.day));
+  });
+
+  // 日期列實際高度 → CSS 變數，讓跳轉後的標題不被日期列擋住（字型載入後高度可能改變）
+  const syncTabsH = () => document.documentElement.style.setProperty("--tabs-h", tabs.offsetHeight + "px");
+  syncTabsH();
+  if ("ResizeObserver" in window) new ResizeObserver(syncTabsH).observe(tabs);
+
+  // 捲動時用 IntersectionObserver 判定目前看到哪一天（畫面 35%～40% 的帶狀區域），不監聽 scroll
+  if ("IntersectionObserver" in window) {
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) setCurrent(Number(en.target.id.slice(4)) - 1); });
+    }, { rootMargin: "-35% 0px -60% 0px", threshold: 0 });
+    document.querySelectorAll("#dayList .day").forEach((el) => io.observe(el));
+
+    // 每日小插圖：只有出現在畫面上時才播放動畫
+    const artIo = new IntersectionObserver((entries) => {
+      entries.forEach((en) => en.target.classList.toggle("paused", !en.isIntersecting));
+    });
+    document.querySelectorAll("#dayList .day-art").forEach((el) => artIo.observe(el));
+  } else {
+    document.querySelectorAll("#dayList .day-art").forEach((el) => el.classList.remove("paused"));
+  }
+
+  // 旅程期間打開網頁：自動捲到當天（網址已指定位置或使用者已開始捲動時不動）
+  if (todayIdx >= 0 && !location.hash) {
+    const go = () => { if (window.scrollY === 0) $("day-" + (todayIdx + 1)).scrollIntoView({ block: "start", behavior: "instant" }); };
+    const fontsReady = document.fonts ? document.fonts.ready : Promise.resolve();
+    Promise.race([fontsReady, new Promise((r) => setTimeout(r, 1500))]).then(go);
+  }
+}
+
+/* ===================== 住宿 ===================== */
+function renderStays() {
+  $("stayList").innerHTML = STAYS.map((s) => `
+    <article class="card stay">
+      <div class="stay-top">${icon("i-house")}<div><h3>${esc(s.name)}</h3><p>${esc(s.area)}・${esc(s.nights)}</p></div></div>
+      <div class="stay-body">
+        <dl class="kv">
+          <dt>入住</dt><dd>${esc(s.checkIn)}</dd>
+          <dt>退房</dt><dd>${esc(s.checkOut)}</dd>
+        </dl>
+        <a class="btn-map" href="${mapUrl(s.q)}" target="_blank" rel="noopener">${icon("i-pin")}用名稱搜尋 Google Maps</a>
+      </div>
+    </article>`).join("");
+}
+
+/* ===================== 導覽目前區塊（IntersectionObserver） ===================== */
+function initNav() {
+  const links = {};
+  document.querySelectorAll("[data-nav]").forEach((a) => { links[a.dataset.nav] = a; });
+  const setActive = (id) => {
+    Object.keys(links).forEach((k) => links[k].setAttribute("aria-current", k === id ? "true" : "false"));
+  };
+  setActive("home");
+  if (!("IntersectionObserver" in window)) return;
+  // 以畫面上方 30%～40% 的帶狀區域判定目前所在區塊，不需要監聽 scroll
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((en) => { if (en.isIntersecting) setActive(en.target.id); });
+  }, { rootMargin: "-30% 0px -60% 0px", threshold: 0 });
+  document.querySelectorAll("[data-section]").forEach((s) => io.observe(s));
+
+  // Hero 不在畫面上時暫停插圖動畫
+  const art = $("heroArt");
+  new IntersectionObserver((en) => art.classList.toggle("paused", !en[0].isIntersecting)).observe(art);
+}
+
+/* ===================== 啟動 ===================== */
+renderHero();
+renderFlights();
+initDays();
+renderStays();
+initNav();
+setInterval(updateCountdown, 60000);
+</script>
+</body>
+</html>
