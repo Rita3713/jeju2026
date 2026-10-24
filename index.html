@@ -270,6 +270,13 @@ section{padding-top:36px}
 .t-ferry{background:var(--water)}
 .t-plane{background:var(--green)}
 .t-walk{background:var(--green-pale)}
+.t-ebike{background:var(--yellow-pale)}
+.planb{margin-top:16px;padding:12px 16px;background:var(--water-pale);border:var(--line) dashed var(--ink);border-radius:var(--r-md)}
+.planb summary{cursor:pointer;font-size:17px;line-height:1.5;list-style-position:inside}
+.planb-hint{margin-left:8px;font-size:13px;color:var(--ink-soft)}
+.planb[open] .planb-hint{display:none}
+.planb-note{margin-top:8px;font-size:14px;line-height:1.6;color:var(--ink-soft)}
+.planb .tl{margin-top:14px}
 .tl-stay{
   margin-top:4px;padding:14px 16px;
   display:flex;gap:12px;align-items:center;
@@ -300,6 +307,19 @@ section{padding-top:36px}
 .stay-top h3{font-size:19px;font-weight:400;line-height:1.35;overflow-wrap:anywhere}
 .stay-top p{font-size:13px;color:var(--ink-soft)}
 .stay-body{padding:12px 16px 16px}
+.pack-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (min-width:720px){.pack-list{grid-template-columns:repeat(3,1fr)}}
+.pack-item{display:flex;align-items:center;gap:10px;padding:10px 12px;font-size:15px;line-height:1.4;cursor:pointer;background:#fff;border:2px solid var(--ink);border-radius:var(--r-md);overflow-wrap:anywhere;transition:background-color .2s}
+.pack-item input{position:absolute;opacity:0;width:1px;height:1px}
+.pack-box{flex:none;display:grid;place-items:center;width:22px;height:22px;background:#fff;border:var(--line) solid var(--ink);border-radius:7px}
+.pack-box svg{width:14px;height:14px;opacity:0;transform:scale(.4);transition:opacity .15s,transform .2s}
+.pack-item:has(input:focus-visible){outline:3px dashed var(--ink);outline-offset:2px}
+.pack-item.done{background:var(--green-pale)}
+.pack-item.done .pack-box{background:var(--green)}
+.pack-item.done .pack-box svg{opacity:1;transform:none}
+.pack-item.done .pack-txt{color:var(--ink-soft);text-decoration:line-through;text-decoration-thickness:2px}
+.pack-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:12px;font-size:14px;color:var(--ink-soft)}
+.pack-bar button{padding:2px 12px;font-size:13px;cursor:pointer;background:#fff;border:2px solid var(--ink);border-radius:999px}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .tab[aria-current="true"]{transform:none}
@@ -317,6 +337,8 @@ section{padding-top:36px}
     <symbol id="i-bed" viewBox="0 0 24 24"><path d="M3 18V7M3 13h18v5M21 18v-3" fill="none" stroke="#3E3A39" stroke-width="2.4" stroke-linecap="round"/><rect x="5" y="9" width="5" height="4" rx="2" fill="#fff" stroke="#3E3A39" stroke-width="2.2"/><path d="M11 13V10.5c0-.8.7-1.5 1.5-1.5H18a3 3 0 0 1 3 3v1z" fill="#F2A497" stroke="#3E3A39" stroke-width="2.2" stroke-linejoin="round"/></symbol>
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-7 7-12a7 7 0 0 0-14 0c0 5 7 12 7 12z" fill="#F2A497" stroke="#3E3A39" stroke-width="2.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" fill="#fff" stroke="#3E3A39" stroke-width="2.2"/></symbol>
     <symbol id="i-car" viewBox="0 0 36 24"><path d="M4 16v-4l4-6h15l6 6h3v4z" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 7.5h5v4.5H8.5zM18 7.5h4l4 4.5h-8z" fill="#E2F1F7" stroke="#3E3A39" stroke-width="2"/><circle cx="10" cy="17" r="3.2" fill="#fff" stroke="#3E3A39" stroke-width="2.4"/><circle cx="26" cy="17" r="3.2" fill="#fff" stroke="#3E3A39" stroke-width="2.4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12.5 4.5 4.5L19 7" fill="none" stroke="#3E3A39" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-bag" viewBox="0 0 44 44"><path d="M16 14v-4a3 3 0 0 1 3-3h6a3 3 0 0 1 3 3v4" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round"/><rect x="6" y="14" width="32" height="24" rx="5" fill="#F2A497" stroke="#3E3A39" stroke-width="3"/><path d="M6 24h32" stroke="#3E3A39" stroke-width="3"/><rect x="19" y="21" width="6" height="6" rx="1.5" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.5"/></symbol>
     <symbol id="i-house" viewBox="0 0 44 44"><path d="M8 20 22 8l14 12v16H8z" fill="#fff" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/><path d="M5 22 22 7l17 15" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="18" y="25" width="8" height="11" rx="2" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.6"/><circle cx="22" cy="18" r="3" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.4"/></symbol>
     <!-- 行程方框右側的靜態小插圖（48×48） -->
     <symbol id="a-sauna" viewBox="0 0 48 48"><g stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
@@ -471,6 +493,17 @@ section{padding-top:36px}
     </div>
     <div class="stays" id="stayList"></div>
   </section>
+
+  <!-- ========== 必帶物品 ========== -->
+  <section id="pack">
+    <div class="sec-head">
+      <svg aria-hidden="true"><use href="#i-bag"/></svg>
+      <div><h2>必帶物品</h2></div>
+    </div>
+    <div class="pack-bar"><span id="packCount" aria-live="polite"></span><button type="button" id="packReset">全部取消勾選</button></div>
+    <p class="note-small" id="packWarn" hidden>這個瀏覽器無法儲存勾選狀態（可能是私密模式），重新整理後會清空。</p>
+    <ul class="pack-list" id="packList"></ul>
+  </section>
 </main>
 
 <script>
@@ -525,7 +558,7 @@ const CAR = {
 };
 
 const Q = {
-  tpe: "Taiwan Taoyuan International Airport",
+  tpe: "桃園國際機場第一航廈",
   cju: "Jeju International Airport",
   lotte: "92 Yonghae-ro, Jeju-si, Jeju-do",
   hwanggung: "황궁쟁반탐라원",
@@ -538,18 +571,26 @@ const Q = {
   audrant: "Audrant Bakery 552-3 Johamhaean-ro, Jocheon-eup",
   dajeong: "다정이네김밥 올레시장",
   ilchulbong: "Seongsan Ilchulbong",
+  bunker: "빛의 벙커 제주",
+  aqua: "아쿠아플라넷 제주",
   seongsan: "Seongsan Port Jeju",
   udo: "Udo Island Jeju",
   udoHaenyeo: "우도 해녀식당",
+  udoSand: "우도샌드 우도해안길 780-2",
+  seobin: "서빈백사해수욕장",
+  hagosu: "하고수동 해변 우도",
+  blanc: "블랑로쉐 우도",
+  haumok: "하우목동항",
   osulloc: "Osulloc Tea Museum",
   jejudang: "제주당 927 Wolgak-ro, Aewol-eup",
   aewol: "Aewol Coastal Road Jeju",
   gwanghae: "제주광해 애월본점",
   mumu: "무무제주",
   daedong: "Daedong Hotel Jeju",
-  dongmun: "Jeju Dongmun Traditional Market",
+  dongmun: "동문시장 관덕로14길 20",
   badang: "바당국수 서귀포",
   ujin: "우진해장국 제주",
+  donhyanggi: "돈향기 관덕로15길 30",
   dotoree: "도토리키친 제주",
   jungang: "Jeju Jungang Underground Shopping Center",
   chilseong: "Chilseong-ro Shopping Street Jeju",
@@ -562,8 +603,8 @@ const DAYS = [
     date: "2026-10-29", md: "10/29", wd: "四",
     title: "抵達濟州・汗蒸幕・倫敦貝果",
     items: [
-      { time: "00:00", end: "00:20", act: "出門搭計程車前往機場", loc: "星河社區 → 桃園機場", mode: "taxi",
-        maps: [{ label: "桃園機場", q: Q.tpe }] },
+      { time: "00:00", end: "00:20", act: "出門搭計程車前往機場", loc: "星河社區 → 桃園機場第一航廈", mode: "taxi",
+        maps: [{ label: "桃園機場第一航廈", q: Q.tpe }] },
       { time: "03:05", end: "06:05", act: "去程：易斯達航空 ZE886", loc: "桃園機場 → 濟州機場", mode: "plane", kind: "flight" },
       { time: "06:05", end: "07:30", act: "入境、領行李", loc: "濟州機場", maps: [{ q: Q.cju }] },
       { time: "07:30", end: "08:00", act: "搭接駁車去取車", loc: "LOTTE Rent-a-Car", maps: [{ q: Q.lotte }],
@@ -592,17 +633,35 @@ const DAYS = [
       { time: "10:00", end: "11:30", act: "登城山日出峰", loc: "城山日出峰", maps: [{ q: Q.ilchulbong }] },
       { time: "11:30", end: "11:40", act: "開車前往港口", loc: "城山港", mode: "car", maps: [{ q: Q.seongsan }] },
       { time: "11:40", end: "12:00", act: "購票、候船", loc: "城山港", maps: [{ q: Q.seongsan }] },
-      { time: "12:00", end: "12:30", act: "搭船前往牛島", loc: "城山港 → 牛島", mode: "ferry", kind: "ferry", maps: [{ label: "牛島", q: Q.udo }] },
-      { time: "12:30", end: "13:15", act: "海岸景點、拍照", loc: "牛島", maps: [{ q: Q.udo }] },
+      { time: "12:00", end: "12:30", act: "搭船前往牛島", loc: "城山港 → 下牛目洞港", mode: "ferry", kind: "ferry", maps: [{ label: "下牛目洞港", q: Q.haumok }],
+        note: "建議搭往下牛目洞港的船；若只有往天津港的船也可以，回程多騎約 1 公里" },
+      { time: "12:30", end: "12:45", act: "租電動腳踏車", loc: "下牛目洞港附近租車店", maps: [{ label: "搜尋牛島電動腳踏車出租", q: "우도 전기자전거 대여" }],
+        note: "回程在同一家店還車" },
+      { time: "12:45", end: "13:15", act: "西濱白沙（珊瑚沙海灘）", loc: "西濱白沙 서빈백사", mode: "ebike", maps: [{ q: Q.seobin }] },
       { time: "13:15", end: "14:00", art: "shell", act: "午餐：海鮮料理", loc: "牛島海女餐廳", maps: [{ q: Q.udoHaenyeo }] },
-      { time: "14:00", end: "14:30", art: "icecream", act: "花生冰淇淋", loc: "牛島", maps: [{ q: Q.udo }] },
-      { time: "14:30", end: "15:30", act: "海岸景點、自由活動", loc: "牛島", maps: [{ q: Q.udo }] },
-      { time: "15:30", end: "16:00", act: "搭船返回", loc: "牛島 → 城山港", mode: "ferry", kind: "ferry", maps: [{ label: "城山港", q: Q.seongsan }] },
+      { time: "14:00", end: "14:30", art: "icecream", act: "花生冰淇淋", loc: "Udo Sand 우도샌드", maps: [{ q: Q.udoSand }] },
+      { time: "14:30", end: "15:00", act: "下高水洞海灘、海景咖啡廳", loc: "下高水洞海灘、Blanc Rocher 블랑로쉐", mode: "ebike",
+        maps: [{ label: "下高水洞海灘", q: Q.hagosu }, { label: "Blanc Rocher", q: Q.blanc }] },
+      { time: "15:00", end: "15:15", act: "騎回港口", loc: "下牛目洞港", mode: "ebike", maps: [{ q: Q.haumok }] },
+      { time: "15:15", end: "15:30", act: "還電動腳踏車", loc: "租車店（下牛目洞港）", maps: [{ label: "搜尋牛島電動腳踏車出租", q: "우도 전기자전거 대여" }] },
+      { time: "15:30", end: "16:00", act: "搭船返回", loc: "下牛目洞港 → 城山港", mode: "ferry", kind: "ferry", maps: [{ label: "城山港", q: Q.seongsan }] },
       { time: "16:00", end: "17:00", act: "開車返回飯店", loc: "西歸浦", mode: "car", maps: [{ q: Q.seogwipo }] },
       { time: "18:00", end: "19:00", act: "晚餐：韓式湯飯或麵食", loc: "바당국수", maps: [{ q: Q.badang }] },
       { time: "19:00", open: true, act: "回飯店休息", loc: "The First70 Hotel", maps: [{ q: Q.first70 }] }
     ],
-    stay: { name: "第一70飯店 The First70 Hotel", area: "西歸浦", q: Q.first70 }
+    stay: { name: "第一70飯店 The First70 Hotel", area: "西歸浦", q: Q.first70 },
+    planB: {
+      title: "雨天備案：牛島渡輪停駛時",
+      note: "牛島渡輪遇到強風或大浪會停駛，出發前先向城山港確認。早餐、城山日出峰與晚餐不變，以下行程取代 11:30 之後的牛島行程。",
+      items: [
+        { time: "11:30", end: "11:45", act: "開車前往光之地堡", loc: "光之地堡 빛의 벙커", mode: "car", maps: [{ q: Q.bunker }] },
+        { time: "11:45", end: "13:00", act: "光之地堡（沉浸式光影藝術展）", loc: "光之地堡 빛의 벙커", maps: [{ q: Q.bunker }] },
+        { time: "13:00", end: "14:00", act: "午餐：城山周邊海鮮", loc: "城山港周邊", maps: [{ label: "搜尋城山港附近餐廳", q: "restaurants near Seongsan Port Jeju" }] },
+        { time: "14:00", end: "14:15", act: "開車前往濟州水上星球", loc: "濟州水上星球 아쿠아플라넷 제주", mode: "car", maps: [{ q: Q.aqua }] },
+        { time: "14:15", end: "16:15", act: "濟州水上星球（水族館）", loc: "濟州水上星球 아쿠아플라넷 제주", maps: [{ q: Q.aqua }] },
+        { time: "16:15", end: "17:15", act: "開車返回飯店", loc: "西歸浦", mode: "car", maps: [{ q: Q.seogwipo }] }
+      ]
+    }
   },
   {
     date: "2026-10-31", md: "10/31", wd: "六",
@@ -633,18 +692,17 @@ const DAYS = [
     date: "2026-11-01", md: "11/1", wd: "日",
     title: "濟州市區購物・返台",
     items: [
-      { time: "09:30", end: "11:00", act: "起床、早餐、整理行李", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] },
+      { time: "09:30", end: "10:00", act: "起床、早餐、整理行李", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] },
+      { time: "10:00", end: "10:45", art: "crate", act: "市場採買、伴手禮", loc: "東門市場", maps: [{ q: Q.dongmun }] },
+      { time: "10:45", end: "11:00", act: "前往午餐地點", loc: "도토리키친 Dotoree Kitchen", mode: "walk", maps: [{ q: Q.dotoree }] },
       { time: "11:00", end: "12:00", art: "noodle", act: "午餐：柑橘蕎麥麵", loc: "도토리키친 Dotoree Kitchen", maps: [{ q: Q.dotoree }] },
-      { time: "12:00", end: "13:00", art: "crate", act: "市場採買、伴手禮", loc: "東門市場", maps: [{ q: Q.dongmun }] },
-      { time: "13:00", end: "14:00", act: "逛街、購物", loc: "中央地下商店街、七星路",
+      { time: "12:00", end: "12:15", act: "前往超市", loc: "樂天超市濟州店", mode: "taxi", maps: [{ q: Q.lotteMart }] },
+      { time: "12:15", end: "13:45", act: "超市採買、買零食伴手禮", loc: "LOTTE MART Jeju", maps: [{ q: Q.lotteMart }] },
+      { time: "13:45", end: "14:00", act: "搭計程車回市區", loc: "七星路一帶", mode: "taxi", maps: [{ q: Q.chilseong }] },
+      { time: "14:00", end: "17:00", act: "逛街、購物", loc: "中央地下商店街、七星路",
         maps: [{ label: "中央地下商店街", q: Q.jungang }, { label: "七星路", q: Q.chilseong }] },
-      { time: "14:00", end: "14:30", act: "前往超市", loc: "樂天超市濟州店", maps: [{ q: Q.lotteMart }] },
-      { time: "14:30", end: "16:00", act: "超市採買、買零食伴手禮", loc: "LOTTE MART Jeju", maps: [{ q: Q.lotteMart }] },
-      { time: "16:00", end: "16:15", act: "搭計程車回市區", loc: "七星路一帶", mode: "taxi", maps: [{ q: Q.chilseong }] },
-      { time: "16:15", end: "17:00", act: "採買時間", loc: "中央地下商店街、七星路一帶",
-        maps: [{ label: "中央地下商店街", q: Q.jungang }, { label: "七星路", q: Q.chilseong }] },
-      { time: "17:00", end: "18:30", act: "晚餐", loc: "舊市區、飯店附近", maps: [{ label: "搜尋飯店附近餐廳", q: "restaurants near Daedong Hotel Jeju" }] },
-      { time: "18:30", end: "19:15", act: "最後採買", loc: "七星路", maps: [{ q: Q.chilseong }] },
+      { time: "17:00", end: "18:30", act: "晚餐", loc: "豚香氣 돈향기", mode: "walk", maps: [{ q: Q.donhyanggi }] },
+      { time: "18:30", end: "19:15", act: "彈性時間", loc: "七星路", maps: [{ q: Q.chilseong }] },
       { time: "19:15", end: "19:30", act: "回飯店取行李", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] },
       { time: "19:30", end: "20:00", act: "搭計程車前往機場", loc: "濟州機場", mode: "taxi", maps: [{ q: Q.cju }] },
       { time: "20:00", end: "22:40", act: "報到、安檢、登機", loc: "濟州機場", maps: [{ q: Q.cju }] },
@@ -654,12 +712,17 @@ const DAYS = [
   }
 ];
 
+const PACKING = [
+  "護照", "電子入境卡", "國際駕照、台灣駕照正本", "實體信用卡、韓元現金", "eSIM",
+  "轉接頭、充電線", "行動電源（透明夾鏈袋）", "換洗衣物、防風外套", "雨傘", "帽子、太陽眼鏡"
+];
+
 const STAYS = [
   { name: "第一70飯店 The First70 Hotel", area: "西歸浦", checkIn: "2026/10/29（四）", checkOut: "2026/10/31（六）", nights: "2 晚", q: Q.first70 },
   { name: "大同酒店 Daedong Hotel", area: "濟州市區", checkIn: "2026/10/31（六）", checkOut: "2026/11/1（日）", nights: "1 晚", q: Q.daedong }
 ];
 
-const MODE_LABEL = { car: "開車", taxi: "計程車", ferry: "渡輪", plane: "飛機", walk: "步行" };
+const MODE_LABEL = { car: "開車", taxi: "計程車", ferry: "渡輪", plane: "飛機", walk: "步行", ebike: "電動腳踏車" };
 const CN_NUM = "一二三四五六七八九十";
 const dayName = (i) => "第" + CN_NUM[i] + "天";
 
@@ -872,6 +935,12 @@ function dayHtml(d, i) {
       </div>
       <ol class="tl">${d.items.map(itemHtml).join("")}</ol>
       ${stayHtml}
+      ${d.planB ? `
+      <details class="planb">
+        <summary>${esc(d.planB.title)}<span class="planb-hint">點開查看</span></summary>
+        <p class="planb-note">${esc(d.planB.note)}</p>
+        <ol class="tl">${d.planB.items.map(itemHtml).join("")}</ol>
+      </details>` : ""}
     </article>`;
 }
 
@@ -919,6 +988,50 @@ function initDays() {
   }
 }
 
+/* ===================== 必帶物品（勾選狀態存在 localStorage） ===================== */
+const PACK_KEY = "jeju-trip-2026-pack-v1";
+const packStore = (() => {
+  try {
+    localStorage.setItem("__jeju_test__", "1");
+    localStorage.removeItem("__jeju_test__");
+    return localStorage;
+  } catch (e) {
+    return null;
+  }
+})();
+
+function initPacking() {
+  let done = {};
+  try { done = JSON.parse((packStore && packStore.getItem(PACK_KEY)) || "{}") || {}; } catch (e) { done = {}; }
+  const save = () => {
+    if (!packStore) return;
+    try { packStore.setItem(PACK_KEY, JSON.stringify(done)); } catch (e) { $("packWarn").hidden = false; }
+  };
+  const count = () => {
+    const n = PACKING.filter((t) => done[t]).length;
+    $("packCount").textContent = `已準備 ${n} / ${PACKING.length}`;
+  };
+  $("packWarn").hidden = !!packStore;
+  $("packList").innerHTML = PACKING.map((t) => `
+    <li><label class="pack-item${done[t] ? " done" : ""}">
+      <input type="checkbox" data-k="${esc(t)}"${done[t] ? " checked" : ""}>
+      <span class="pack-box">${icon("i-check")}</span><span class="pack-txt">${esc(t)}</span>
+    </label></li>`).join("");
+  $("packList").addEventListener("change", (e) => {
+    const cb = e.target;
+    if (!cb.matches("input[type=checkbox]")) return;
+    if (cb.checked) done[cb.dataset.k] = true; else delete done[cb.dataset.k];
+    cb.closest(".pack-item").classList.toggle("done", cb.checked);
+    save(); count();
+  });
+  $("packReset").addEventListener("click", () => {
+    done = {};
+    $("packList").querySelectorAll("input").forEach((cb) => { cb.checked = false; cb.closest(".pack-item").classList.remove("done"); });
+    save(); count();
+  });
+  count();
+}
+
 /* ===================== 住宿 ===================== */
 function renderStays() {
   $("stayList").innerHTML = STAYS.map((s) => `
@@ -959,6 +1072,7 @@ renderHero();
 renderFlights();
 initDays();
 renderStays();
+initPacking();
 initNav();
 setInterval(updateCountdown, 60000);
 </script>
