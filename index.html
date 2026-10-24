@@ -247,7 +247,9 @@ section{padding-top:36px}
 .tl-item.k-move .tl-dot{background:var(--yellow)}
 .tl-time{font-size:15px;line-height:1.4;font-variant-numeric:tabular-nums}
 .tl-time .open{font-size:13px;color:var(--ink-soft);margin-left:2px}
-.tl-box{margin-top:4px;padding:10px 14px;background:#fff;border:2px solid var(--ink);border-radius:var(--r-md)}
+.tl-box{display:flex;align-items:center;gap:10px;margin-top:4px;padding:10px 14px;background:#fff;border:2px solid var(--ink);border-radius:var(--r-md)}
+.tl-main{flex:1;min-width:0}
+.tl-art{flex:none;width:48px;height:48px}
 .tl-act{font-size:17px;line-height:1.45;overflow-wrap:anywhere}
 .tl-loc{margin-top:4px;font-size:14px;line-height:1.5;overflow-wrap:anywhere;color:var(--ink-soft)}
 .tl-loc .pin{display:inline-block;width:14px;height:14px;vertical-align:-2px;margin-right:3px}
@@ -316,6 +318,77 @@ section{padding-top:36px}
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 22s7-7 7-12a7 7 0 0 0-14 0c0 5 7 12 7 12z" fill="#F2A497" stroke="#3E3A39" stroke-width="2.6" stroke-linejoin="round"/><circle cx="12" cy="10" r="2.6" fill="#fff" stroke="#3E3A39" stroke-width="2.2"/></symbol>
     <symbol id="i-car" viewBox="0 0 36 24"><path d="M4 16v-4l4-6h15l6 6h3v4z" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.4" stroke-linejoin="round"/><path d="M10 7.5h5v4.5H8.5zM18 7.5h4l4 4.5h-8z" fill="#E2F1F7" stroke="#3E3A39" stroke-width="2"/><circle cx="10" cy="17" r="3.2" fill="#fff" stroke="#3E3A39" stroke-width="2.4"/><circle cx="26" cy="17" r="3.2" fill="#fff" stroke="#3E3A39" stroke-width="2.4"/></symbol>
     <symbol id="i-house" viewBox="0 0 44 44"><path d="M8 20 22 8l14 12v16H8z" fill="#fff" stroke="#3E3A39" stroke-width="3" stroke-linejoin="round"/><path d="M5 22 22 7l17 15" fill="none" stroke="#3E3A39" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/><rect x="18" y="25" width="8" height="11" rx="2" fill="#F6D27A" stroke="#3E3A39" stroke-width="2.6"/><circle cx="22" cy="18" r="3" fill="#A8D3E6" stroke="#3E3A39" stroke-width="2.4"/></symbol>
+    <!-- 行程方框右側的靜態小插圖（48×48） -->
+    <symbol id="a-sauna" viewBox="0 0 48 48"><g stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M18 9q-2-3 0-6M24 9q-2-3 0-6M30 9q-2-3 0-6" fill="none"/>
+      <circle cx="24" cy="31" r="12" fill="#FBE3DE"/>
+      <path d="M11 25c0-10 26-10 26 0z" fill="#F6D27A"/>
+      <circle cx="11" cy="24" r="5" fill="#F6D27A"/><circle cx="37" cy="24" r="5" fill="#F6D27A"/>
+      <path d="M19 32h2M27 32h2" fill="none"/><path d="M22 37q2 1.5 4 0" fill="none"/></g></symbol>
+    <symbol id="a-jajang" viewBox="0 0 48 48"><g stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M28 4l10 16M34 3l9 15" fill="none"/>
+      <path d="M6 24h36a18 16 0 0 1-36 0z" fill="#fff"/>
+      <path d="M9 24c3-10 27-10 30 0z" fill="#5C4033"/>
+      <path d="M18 19h4M26 17h3" stroke="#B9DAA5" stroke-width="2.5"/></g></symbol>
+    <symbol id="a-bagel" viewBox="0 0 48 48"><g stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+      <ellipse cx="24" cy="26" rx="18" ry="14" fill="#F6D27A"/>
+      <ellipse cx="24" cy="26" rx="6" ry="4" fill="#fff"/>
+      <path d="M14 20l1 1M32 18l1 1M34 30l1 1M15 31l1 1M24 15l1 1" fill="none"/></g></symbol>
+    <symbol id="a-gimbap" viewBox="0 0 48 48"><g stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+      <rect x="4" y="8" width="30" height="18" rx="9" fill="#3E3A39"/>
+      <path d="M12 9v16M20 9v16" stroke="#6B6563" fill="none"/>
+      <circle cx="33" cy="17" r="9" fill="#fff" stroke-width="3.5"/>
+      <circle cx="15" cy="36" r="9" fill="#fff" stroke-width="3.5"/>
+      <circle cx="35" cy="37" r="8" fill="#fff" stroke-width="3.5"/></g>
+      <rect x="29" y="14" width="2.6" height="6" rx="1" fill="#F6D27A"/><rect x="31.7" y="14" width="2.6" height="6" rx="1" fill="#B9DAA5"/><rect x="34.4" y="14" width="2.6" height="6" rx="1" fill="#F2A497"/><rect x="11" y="33" width="2.6" height="6" rx="1" fill="#F6D27A"/><rect x="13.7" y="33" width="2.6" height="6" rx="1" fill="#B9DAA5"/><rect x="16.4" y="33" width="2.6" height="6" rx="1" fill="#F2A497"/><rect x="31" y="34" width="2.6" height="6" rx="1" fill="#F6D27A"/><rect x="33.7" y="34" width="2.6" height="6" rx="1" fill="#B9DAA5"/><rect x="36.4" y="34" width="2.6" height="6" rx="1" fill="#F2A497"/></symbol>
+    <symbol id="a-shell" viewBox="0 0 48 48"><g stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M20 10q-2-3 0-6M27 9q-2-3 0-6" fill="none"/>
+      <path d="M7 24h34l-3 14a4 4 0 0 1-4 3H14a4 4 0 0 1-4-3z" fill="#8B5E3C"/>
+      <path d="M8 23a8 7 0 0 1 16 0z" fill="#E2F1F7"/>
+      <path d="M16 23v-6M12 23l1.5-5M20 23l-1.5-5" fill="none" stroke-width="1.8"/>
+      <path d="M25 23c0-6 4-10 10-10 5 0 7 3 7 6h-4c0-2-1-3-3-3-3 0-6 3-6 7z" fill="#F2A497"/>
+      <path d="M25 23l-3 2 1-5" fill="#F2A497"/>
+      <path d="M30 15l1 3M34 13.5v3.5" fill="none" stroke-width="1.8"/>
+      <rect x="5" y="22" width="38" height="5" rx="2.5" fill="#8B5E3C"/></g></symbol>
+    <symbol id="a-pork" viewBox="0 0 48 48"><g stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M14 11q-2-3 0-6M24 10q-2-3 0-6M34 11q-2-3 0-6" fill="none"/>
+      <ellipse cx="24" cy="31" rx="20" ry="13" fill="#5C4033"/>
+      <path d="M9 27h30M7 32h34M9 37h30" stroke="#8B5E3C" fill="none"/>
+      <g transform="rotate(-12 17 28)"><rect x="8" y="23" width="18" height="10" rx="3" fill="#F2A497"/><path d="M9 25.5h16" stroke-width="3.5"/></g>
+      <g transform="rotate(10 32 31)"><rect x="23" y="26" width="18" height="10" rx="3" fill="#F2A497"/><path d="M24 28.5h16" stroke-width="3.5"/></g></g></symbol>
+    <symbol id="a-icecream" viewBox="0 0 48 48"><g stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M15 22h18l-9 22z" fill="#F6D27A"/>
+      <path d="M19 27l9 5M29 27l-9 5" fill="none"/>
+      <path d="M12 22a12 12 0 0 1 24 0z" fill="#EBD3A8"/>
+      <path d="M19 14l1 1M27 12l1 1M30 18l1 1" fill="none"/></g></symbol>
+    <symbol id="a-fish" viewBox="0 0 48 48"><g stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M4 26c8-9 26-11 36-2l5-5v14l-5-5c-10 8-28 7-36-2z" fill="#E2F1F7"/>
+      <path d="M14 22q10-4 22 0" fill="none" stroke="#A8D3E6"/></g>
+      <circle cx="10" cy="25" r="1.8" fill="#3E3A39"/></symbol>
+    <symbol id="a-gift" viewBox="0 0 48 48"><g stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+      <rect x="8" y="20" width="32" height="22" rx="3" fill="#F2A497"/>
+      <rect x="6" y="14" width="36" height="8" rx="2" fill="#F2A497"/>
+      <path d="M24 14v28" stroke-width="5" stroke="#F6D27A"/>
+      <path d="M24 14c-3-7-12-7-9-1 2 2 6 1 9 1zM24 14c3-7 12-7 9-1-2 2-6 1-9 1z" fill="#F6D27A"/></g></symbol>
+    <symbol id="a-fuel" viewBox="0 0 48 48"><g stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+      <rect x="27" y="8" width="14" height="32" rx="3" fill="#B9DAA5"/>
+      <rect x="30" y="12" width="8" height="7" rx="1" fill="#fff"/>
+      <path d="M27 24h-4v8h-3" fill="none"/>
+      <path d="M3 38v-5l3-6h12l4 6h2v5z" fill="#F6D27A"/>
+      <circle cx="9" cy="39" r="3" fill="#fff"/><circle cx="19" cy="39" r="3" fill="#fff"/></g></symbol>
+    <symbol id="a-noodle" viewBox="0 0 48 48"><g stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M4 24h32a16 15 0 0 1-32 0z" fill="#fff"/>
+      <path d="M8 24c4-4 20-4 24 0" fill="#EBD3A8"/>
+      <path d="M12 23q3-3 6 0t6 0 6 0" fill="none"/>
+      <circle cx="38" cy="16" r="8" fill="#F6B57A"/>
+      <path d="M38 8c2-4 7-4 8-2-2 3-6 4-8 2z" fill="#B9DAA5" stroke-width="2"/></g></symbol>
+    <symbol id="a-crate" viewBox="0 0 48 48"><g stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+      <circle cx="14" cy="20" r="7" fill="#F6B57A"/><circle cx="34" cy="20" r="7" fill="#F6B57A"/><circle cx="24" cy="17" r="7" fill="#F6B57A"/>
+      <rect x="5" y="22" width="38" height="20" rx="3" fill="#F6D27A"/>
+      <path d="M5 32h38M17 22v20M31 22v20" fill="none"/></g></symbol>
+    <symbol id="a-plane" viewBox="0 0 48 48"><g stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M6 36a6 6 0 0 1 10-4 5 5 0 0 1 8 4z" fill="#fff"/>
+      <path d="M6 24 40 12c3-1 4 3 1 4L27 22l-5 11-4-1 2-9-9 3z" fill="#A8D3E6"/></g></symbol>
   </defs>
 </svg>
 
@@ -455,7 +528,7 @@ const Q = {
   tpe: "Taiwan Taoyuan International Airport",
   cju: "Jeju International Airport",
   lotte: "92 Yonghae-ro, Jeju-si, Jeju-do",
-  cuEco: "CU 제주에코빌리지점",
+  hwanggung: "황궁쟁반탐라원",
   hyatt: "Grand Hyatt Jeju",
   seogwipo: "Seogwipo-si, Jeju-do",
   first70: "The First70 Hotel Seogwipo",
@@ -495,18 +568,18 @@ const DAYS = [
       { time: "06:05", end: "07:30", act: "入境、領行李", loc: "濟州機場", maps: [{ q: Q.cju }] },
       { time: "07:30", end: "08:00", act: "搭接駁車去取車", loc: "LOTTE Rent-a-Car", maps: [{ q: Q.lotte }],
         note: "租車確認信：取車時間 08:00，地點 Jeju Autohouse" },
-      { time: "08:00", end: "08:15", act: "開車前往君悅停車", loc: "濟州君悅酒店", mode: "car", maps: [{ q: Q.hyatt }] },
-      { time: "08:15", end: "09:15", act: "去便利商店買早餐", loc: "CU 便利商店 씨유 제주에코빌리지점", mode: "walk", maps: [{ q: Q.cuEco }] },
-      { time: "09:15", end: "13:00", act: "汗蒸幕、洗澡、休息", loc: "濟州君悅酒店 Korean Jjimjil Spa", maps: [{ q: Q.hyatt }] },
+      { time: "08:00", end: "08:15", act: "開車前往汗蒸幕", loc: "濟州君悅酒店", mode: "car", maps: [{ q: Q.hyatt }] },
+      { time: "08:15", end: "12:00", art: "sauna", act: "汗蒸幕、洗澡、休息", loc: "濟州君悅酒店 Korean Jjimjil Spa", maps: [{ q: Q.hyatt }] },
+      { time: "12:00", end: "13:00", art: "jajang", act: "午餐：炸醬麵", loc: "황궁쟁반탐라원", mode: "walk", maps: [{ q: Q.hwanggung }] },
       { time: "13:00", end: "13:45", act: "開車前往貝果店", loc: "濟州倫敦貝果博物館", mode: "car", maps: [{ q: Q.bagel }] },
-      { time: "13:45", end: "14:45", act: "午餐：倫敦貝果", loc: "London Bagel Museum 濟州店", maps: [{ q: Q.bagel }] },
-      { time: "14:45", end: "15:00", act: "開車前往 Audrant Bakery 麵包店", loc: "Audrant Bakery", mode: "car", maps: [{ q: Q.audrant }] },
-      { time: "15:00", end: "15:30", act: "買大蒜麵包", loc: "Audrant Bakery", maps: [{ q: Q.audrant }] },
-      { time: "15:30", end: "16:45", act: "開車前往西歸浦", loc: "西歸浦市區", mode: "car", maps: [{ q: Q.seogwipo }] },
-      { time: "16:45", end: "17:15", act: "入住、休息", loc: "The First70 Hotel", maps: [{ q: Q.first70 }] },
-      { time: "17:15", end: "18:45", act: "逛市場", loc: "西歸浦每日偶來市場", maps: [{ q: Q.olle }] },
-      { time: "18:45", end: "20:15", act: "晚餐：黑豬肉", loc: "뽈살집", maps: [{ q: Q.ppolsal }] },
-      { time: "20:15", open: true, act: "回飯店休息", loc: "The First70 Hotel", maps: [{ q: Q.first70 }] }
+      { time: "13:45", end: "15:00", art: "bagel", act: "倫敦貝果", loc: "London Bagel Museum 濟州店", maps: [{ q: Q.bagel }] },
+      { time: "15:00", end: "15:15", act: "開車前往 Audrant Bakery 麵包店", loc: "Audrant Bakery", mode: "car", maps: [{ q: Q.audrant }] },
+      { time: "15:15", end: "15:45", act: "買大蒜麵包", loc: "Audrant Bakery", maps: [{ q: Q.audrant }] },
+      { time: "15:45", end: "17:00", act: "開車前往西歸浦", loc: "西歸浦市區", mode: "car", maps: [{ q: Q.seogwipo }] },
+      { time: "17:00", end: "17:30", act: "入住、休息", loc: "The First70 Hotel", maps: [{ q: Q.first70 }] },
+      { time: "17:30", end: "19:00", act: "逛市場", loc: "西歸浦每日偶來市場", maps: [{ q: Q.olle }] },
+      { time: "19:00", end: "20:30", art: "pork", act: "晚餐：黑豬肉", loc: "뽈살집", maps: [{ q: Q.ppolsal }] },
+      { time: "20:30", open: true, act: "回飯店休息", loc: "The First70 Hotel", maps: [{ q: Q.first70 }] }
     ],
     stay: { name: "第一70飯店 The First70 Hotel", area: "西歸浦", q: Q.first70 }
   },
@@ -514,15 +587,15 @@ const DAYS = [
     date: "2026-10-30", md: "10/30", wd: "五",
     title: "城山日出峰・牛島",
     items: [
-      { time: "08:00", end: "09:00", act: "早餐", loc: "多情家紫菜飯捲 다정이네김밥", mode: "walk", maps: [{ q: Q.dajeong }] },
+      { time: "08:00", end: "09:00", art: "gimbap", act: "早餐", loc: "多情家紫菜飯捲 다정이네김밥", mode: "walk", maps: [{ q: Q.dajeong }] },
       { time: "09:00", end: "10:00", act: "開車前往城山日出峰", loc: "城山日出峰", mode: "car", maps: [{ q: Q.ilchulbong }] },
       { time: "10:00", end: "11:30", act: "登城山日出峰", loc: "城山日出峰", maps: [{ q: Q.ilchulbong }] },
       { time: "11:30", end: "11:40", act: "開車前往港口", loc: "城山港", mode: "car", maps: [{ q: Q.seongsan }] },
       { time: "11:40", end: "12:00", act: "購票、候船", loc: "城山港", maps: [{ q: Q.seongsan }] },
       { time: "12:00", end: "12:30", act: "搭船前往牛島", loc: "城山港 → 牛島", mode: "ferry", kind: "ferry", maps: [{ label: "牛島", q: Q.udo }] },
       { time: "12:30", end: "13:15", act: "海岸景點、拍照", loc: "牛島", maps: [{ q: Q.udo }] },
-      { time: "13:15", end: "14:00", act: "午餐：海鮮料理", loc: "牛島海女餐廳", maps: [{ q: Q.udoHaenyeo }] },
-      { time: "14:00", end: "14:30", act: "花生冰淇淋", loc: "牛島", maps: [{ q: Q.udo }] },
+      { time: "13:15", end: "14:00", art: "shell", act: "午餐：海鮮料理", loc: "牛島海女餐廳", maps: [{ q: Q.udoHaenyeo }] },
+      { time: "14:00", end: "14:30", art: "icecream", act: "花生冰淇淋", loc: "牛島", maps: [{ q: Q.udo }] },
       { time: "14:30", end: "15:30", act: "海岸景點、自由活動", loc: "牛島", maps: [{ q: Q.udo }] },
       { time: "15:30", end: "16:00", act: "搭船返回", loc: "牛島 → 城山港", mode: "ferry", kind: "ferry", maps: [{ label: "城山港", q: Q.seongsan }] },
       { time: "16:00", end: "17:00", act: "開車返回飯店", loc: "西歸浦", mode: "car", maps: [{ q: Q.seogwipo }] },
@@ -541,12 +614,12 @@ const DAYS = [
       { time: "11:15", end: "11:30", act: "開車前往濟州堂", loc: "濟州堂 제주당", mode: "car", maps: [{ q: Q.jejudang }] },
       { time: "11:30", end: "12:05", act: "麵包、咖啡", loc: "濟州堂 제주당", maps: [{ q: Q.jejudang }] },
       { time: "12:05", end: "12:20", act: "開車前往可愛紀念品店", loc: "무무제주 Mumu Jeju", mode: "car", maps: [{ q: Q.mumu }] },
-      { time: "12:20", end: "12:50", act: "可愛紀念品店", loc: "무무제주 Mumu Jeju", maps: [{ q: Q.mumu }] },
+      { time: "12:20", end: "12:50", art: "gift", act: "可愛紀念品店", loc: "무무제주 Mumu Jeju", maps: [{ q: Q.mumu }] },
       { time: "12:50", end: "13:05", act: "開車前往涯月", loc: "涯月海岸", mode: "car", maps: [{ q: Q.aewol }] },
-      { time: "13:05", end: "14:05", act: "午餐：整套帶魚料理", loc: "제주광해 애월본점", maps: [{ q: Q.gwanghae }] },
+      { time: "13:05", end: "14:05", art: "fish", act: "午餐：整套帶魚料理", loc: "제주광해 애월본점", maps: [{ q: Q.gwanghae }] },
       { time: "14:05", end: "14:50", act: "海岸散步、拍照", loc: "涯月海岸", maps: [{ q: Q.aewol }] },
       { time: "14:50", end: "15:10", act: "開車前往還車處", loc: "LOTTE Rent-a-Car", mode: "car", maps: [{ q: Q.lotte }] },
-      { time: "15:10", end: "15:55", act: "加油、還車", loc: "LOTTE Rent-a-Car Auto House", maps: [{ q: Q.lotte }],
+      { time: "15:10", end: "15:55", art: "fuel", act: "加油、還車", loc: "LOTTE Rent-a-Car Auto House", maps: [{ q: Q.lotte }],
         note: "租車確認信：最晚還車時間 10/31 20:00" },
       { time: "15:55", end: "16:30", act: "前往飯店、入住", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] },
       { time: "16:30", end: "18:30", act: "逛街或休息", loc: "東門市場周邊", maps: [{ q: Q.dongmun }] },
@@ -561,8 +634,8 @@ const DAYS = [
     title: "濟州市區購物・返台",
     items: [
       { time: "09:30", end: "11:00", act: "起床、早餐、整理行李", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] },
-      { time: "11:00", end: "12:00", act: "午餐：柑橘蕎麥麵", loc: "도토리키친 Dotoree Kitchen", maps: [{ q: Q.dotoree }] },
-      { time: "12:00", end: "13:00", act: "市場採買、伴手禮", loc: "東門市場", maps: [{ q: Q.dongmun }] },
+      { time: "11:00", end: "12:00", art: "noodle", act: "午餐：柑橘蕎麥麵", loc: "도토리키친 Dotoree Kitchen", maps: [{ q: Q.dotoree }] },
+      { time: "12:00", end: "13:00", art: "crate", act: "市場採買、伴手禮", loc: "東門市場", maps: [{ q: Q.dongmun }] },
       { time: "13:00", end: "14:00", act: "逛街、購物", loc: "中央地下商店街、七星路",
         maps: [{ label: "中央地下商店街", q: Q.jungang }, { label: "七星路", q: Q.chilseong }] },
       { time: "14:00", end: "14:30", act: "前往超市", loc: "樂天超市濟州店", maps: [{ q: Q.lotteMart }] },
@@ -575,7 +648,7 @@ const DAYS = [
       { time: "19:15", end: "19:30", act: "回飯店取行李", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] },
       { time: "19:30", end: "20:00", act: "搭計程車前往機場", loc: "濟州機場", mode: "taxi", maps: [{ q: Q.cju }] },
       { time: "20:00", end: "22:40", act: "報到、安檢、登機", loc: "濟州機場", maps: [{ q: Q.cju }] },
-      { time: "22:40", end: "00:05", endNextDay: "11/2", act: "回程：易斯達航空 ZE885", loc: "濟州機場 → 桃園機場", mode: "plane", kind: "flight" }
+      { time: "22:40", end: "00:05", endNextDay: "11/2", art: "plane", act: "回程：易斯達航空 ZE885", loc: "濟州機場 → 桃園機場", mode: "plane", kind: "flight" }
     ],
     stay: { none: true, name: "返台，溫暖的家", area: "11/2 凌晨抵達桃園機場" }
   }
@@ -772,10 +845,13 @@ function itemHtml(it) {
       <span class="tl-dot" aria-hidden="true"></span>
       <div class="tl-time">${timeHtml(it)}</div>
       <div class="tl-box">
-        <p class="tl-act">${esc(it.act)}</p>
-        ${locHtml(it)}
-        ${tags.length ? `<div class="tl-tags">${tags.join("")}</div>` : ""}
-        ${it.note ? `<p class="note-small" style="margin-top:6px">${esc(it.note)}</p>` : ""}
+        <div class="tl-main">
+          <p class="tl-act">${esc(it.act)}</p>
+          ${locHtml(it)}
+          ${tags.length ? `<div class="tl-tags">${tags.join("")}</div>` : ""}
+          ${it.note ? `<p class="note-small" style="margin-top:6px">${esc(it.note)}</p>` : ""}
+        </div>
+        ${it.art ? `<svg class="tl-art" aria-hidden="true"><use href="#a-${it.art}"/></svg>` : ""}
       </div>
     </li>`;
 }
