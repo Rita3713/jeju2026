@@ -320,8 +320,56 @@ section{padding-top:36px}
 .pack-item.done .pack-txt{color:var(--ink-soft);text-decoration:line-through;text-decoration-thickness:2px}
 .pack-bar{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;margin-bottom:12px;font-size:14px;color:var(--ink-soft)}
 .pack-bar button{padding:2px 12px;font-size:13px;cursor:pointer;background:#fff;border:2px solid var(--ink);border-radius:999px}
+/* ---------- 每日路線圖 ---------- */
+.route-map{margin:18px 0 0;padding:12px 12px 10px;background:#fff;border:var(--line) solid var(--ink);border-radius:var(--r-md)}
+@media (max-width:360px){.route-map{padding:10px 6px 8px}}
+.rm-cap{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px;margin:0 2px 8px;font-size:16px}
+.rm-cap-sub{font-size:13px;color:var(--ink-soft)}
+.route-map svg[role="img"]{display:block;width:100%;height:auto;max-width:560px;margin:0 auto;border:2px solid var(--ink);border-radius:14px;background:#D9EDF5}
+.rm-sea{fill:#D9EDF5}
+.rm-land{fill:#FFFCF6;stroke:var(--ink);stroke-width:2.2;stroke-linejoin:round}
+.rm-halla path{fill:var(--green);stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+.rm-halla path.snow{fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round}
+.rm-halla text{font-size:10.5px;fill:var(--ink-soft)}
+.rm-compass path{fill:var(--coral);stroke:var(--ink);stroke-width:1.8;stroke-linejoin:round}
+.rm-compass text{font-size:11px;fill:var(--ink)}
+.rm-mini-bg{fill:#fff;stroke:var(--ink);stroke-width:5}
+.rm-mini-land{fill:var(--green-pale);stroke:var(--ink);stroke-width:6;stroke-linejoin:round}
+.rm-mini-box{fill:rgba(242,164,151,.35);stroke:#D9705E;stroke-width:7;stroke-linejoin:round}
+.rm-case{fill:none;stroke:var(--ink);stroke-width:6.5;stroke-linecap:round}
+.rm-core{fill:none;stroke-width:3.4;stroke-linecap:round}
+.rm-line{fill:none;stroke:var(--ink);stroke-width:3;stroke-linecap:round}
+.rm-thin{fill:none;stroke:var(--ink);stroke-width:2}
+.rm-arrow{fill:var(--ink);stroke:var(--ink);stroke-width:1.2;stroke-linejoin:round}
+.rm-lens-bg{fill:#D9EDF5}
+.rm-lens-rim{fill:none;stroke:var(--ink);stroke-width:3}
+.rm-lens-src{fill:none;stroke:var(--ink);stroke-width:1.8;stroke-dasharray:3 3}
+.rm-lens-link{stroke:var(--ink);stroke-width:1.8;stroke-dasharray:3 3}
+.rm-lens-name{font-size:12px;fill:var(--ink);paint-order:stroke;stroke:#D9EDF5;stroke-width:4px;stroke-linejoin:round}
+.rm-stop{cursor:pointer;outline:none}
+.rm-node{stroke:var(--ink);stroke-width:2.4}
+.rm-node.k-start{fill:var(--green)}
+.rm-node.k-mid{fill:var(--yellow)}
+.rm-node.k-end{fill:var(--coral)}
+.rm-ring{fill:none;stroke:var(--ink);stroke-width:1.8}
+.rm-num{font-size:12px;text-anchor:middle;fill:var(--ink);pointer-events:none}
+.rm-lab{font-size:12.5px;fill:var(--ink);paint-order:stroke;stroke:#fff;stroke-width:4px;stroke-linejoin:round}
+.rm-stop:hover .rm-node,.rm-stop:focus-visible .rm-node{stroke-width:3.6}
+.rm-stop:focus-visible .rm-lab{text-decoration:underline}
+.rm-legend{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:8px;padding:0 2px;font-size:13px;color:var(--ink-soft)}
+.rm-key{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.rm-key svg{width:30px;height:14px}
+.rm-dot{display:inline-block;width:13px;height:13px;border:2px solid var(--ink);border-radius:50%}
+.rm-dot.k-start{background:var(--green)}
+.rm-dot.k-mid{background:var(--yellow)}
+.rm-dot.k-end{background:var(--coral)}
+.tl-item{scroll-margin-top:calc(var(--tabs-h, 96px) + 12px)}
+.tl-item.flash .tl-box{animation:rm-flash 2.2s ease-out}
+@keyframes rm-flash{0%,35%{background:var(--yellow-pale);box-shadow:0 0 0 4px var(--yellow)}100%{background:#fff;box-shadow:0 0 0 0 transparent}}
+
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
+  .tl-item.flash .tl-box{background:var(--yellow-pale);box-shadow:0 0 0 4px var(--yellow)}
   .tab[aria-current="true"]{transform:none}
 }
 </style>
@@ -583,7 +631,8 @@ const Q = {
   haumok: "하우목동항",
   osulloc: "Osulloc Tea Museum",
   jejudang: "제주당 927 Wolgak-ro, Aewol-eup",
-  aewol: "Aewol Coastal Road Jeju",
+  aewol: "Aewol Cafe Street",
+  aewolCoast: "구엄리 돌염전",
   gwanghae: "제주광해 애월본점",
   mumu: "무무제주",
   daedong: "Daedong Hotel Jeju",
@@ -602,6 +651,21 @@ const DAYS = [
   {
     date: "2026-10-29", md: "10/29", wd: "四",
     title: "抵達濟州・汗蒸幕・倫敦貝果",
+    route: {
+      view: { n: 33.60, s: 33.21, w: 126.36, e: 126.82 }, miniAt: [8, 130],
+      stops: [
+        { name: "濟州機場", ll: [33.5071, 126.4934], items: [2], lab: "w" },
+        { name: "取車", ll: [33.5090, 126.5024], items: [3], lab: "n" },
+        { name: "君悅汗蒸幕", ll: [33.4854, 126.4816], items: [5], lab: "s" },
+        { name: "炸醬麵", ll: [33.4853, 126.4831], items: [6], lab: "e" },
+        { name: "倫敦貝果", ll: [33.5536, 126.7156], items: [8], lab: "n" },
+        { name: "Audrant Bakery", ll: [33.5421, 126.6716], items: [10], lab: "nw" },
+        { name: "第一70飯店", ll: [33.2473, 126.5669], items: [12, 15], lab: "e" },
+        { name: "每日偶來市場", ll: [33.2487, 126.5641], items: [13], lab: "w" },
+        { name: "黑豬肉", ll: [33.2508, 126.5629], items: [14], lab: "n" }
+      ],
+      path: [[null, 1], ["bus", 2], ["car", 3], ["walk", 4], ["car", 5], ["car", 6], ["car", 7], ["walk", 8], ["walk", 9], ["walk", 7]]
+    },
     items: [
       { time: "00:00", end: "00:20", act: "出門搭計程車前往機場", loc: "星河社區 → 桃園機場第一航廈", mode: "taxi",
         maps: [{ label: "桃園機場第一航廈", q: Q.tpe }] },
@@ -627,6 +691,23 @@ const DAYS = [
   {
     date: "2026-10-30", md: "10/30", wd: "五",
     title: "城山日出峰・牛島",
+    route: {
+      view: { n: 33.66, s: 33.21, w: 126.40, e: 127.02 },
+      stops: [
+        { name: "多情家紫菜飯捲", ll: [33.2494, 126.5668], items: [0], lab: "n" },
+        { name: "城山日出峰", ll: [33.4581, 126.9425], items: [2], lab: "s" },
+        { name: "城山港", ll: [33.4729, 126.9346], items: [4], lab: "w" },
+        { name: "下牛目洞港", ll: [33.5096, 126.9424], items: [6, 12], lab: "w" },
+        { name: "西濱白沙", ll: [33.5023, 126.9433], items: [7], lab: "s" },
+        { name: "海女餐廳", ll: [33.5146, 126.9491], items: [8], lab: "nw" },
+        { name: "Udo Sand", ll: [33.5162, 126.9576], items: [9], lab: "ne" },
+        { name: "下高水洞海灘", ll: [33.5151, 126.9584], items: [10], lab: "e" },
+        { name: "第一70飯店", ll: [33.2473, 126.5669], items: [14, 16], lab: "e" },
+        { name: "바당국수", ll: [33.2504, 126.5656], items: [15], lab: "w" }
+      ],
+      path: [[null, 1], ["car", 2], ["car", 3], ["ferry", 4], ["ebike", 5], ["ebike", 6], ["ebike", 7], ["ebike", 8], ["ebike", 4], ["ferry", 3], ["car", 9], ["walk", 10], ["walk", 9]],
+      lens: { name: "牛島", stubs: true, stops: [4, 5, 6, 7, 8], center: [33.5075, 126.9555], m: 4, r: 64, at: [168, 90] }
+    },
     items: [
       { time: "08:00", end: "09:00", art: "gimbap", act: "早餐", loc: "多情家紫菜飯捲 다정이네김밥", mode: "walk", maps: [{ q: Q.dajeong }] },
       { time: "09:00", end: "10:00", act: "開車前往城山日出峰", loc: "城山日出峰", mode: "car", maps: [{ q: Q.ilchulbong }] },
@@ -666,6 +747,24 @@ const DAYS = [
   {
     date: "2026-10-31", md: "10/31", wd: "六",
     title: "茶博物館・涯月海岸・還車",
+    route: {
+      view: { n: 33.58, s: 33.21, w: 126.20, e: 126.63 }, miniAt: [8, 8], hideHalla: true,
+      stops: [
+        { name: "第一70飯店", ll: [33.2473, 126.5669], items: [0], lab: "s" },
+        { name: "O’Sulloc 茶博物館", ll: [33.3059, 126.2894], items: [2], lab: "s" },
+        { name: "濟州堂", ll: [33.3542, 126.3559], items: [4], lab: "e" },
+        { name: "Mumu Jeju", ll: [33.4190, 126.3114], items: [6], lab: "w" },
+        { name: "帶魚料理", ll: [33.4878, 126.3904], items: [8], lab: "n" },
+        { name: "涯月海岸", ll: [33.4835, 126.3764], items: [9], lab: "w" },
+        { name: "還車", ll: [33.5090, 126.5024], items: [11], lab: "s" },
+        { name: "大同酒店", ll: [33.5138, 126.5271], items: [12, 16], lab: "n" },
+        { name: "東門市場", ll: [33.5115, 126.5263], items: [13], lab: "s" },
+        { name: "宇進解酒湯", ll: [33.5115, 126.5200], items: [14], lab: "s" },
+        { name: "Olive Young", ll: [33.5129, 126.5260], items: [15], lab: "nw" }
+      ],
+      path: [[null, 1], ["car", 2], ["car", 3], ["car", 4], ["car", 5], ["car", 6], ["car", 7, -0.3], ["none", 8], ["walk", 9], ["walk", 10], ["walk", 11], ["walk", 8]],
+      lens: { name: "濟州市區", stops: [8, 9, 10, 11], center: [33.5127, 126.5236], m: 18, r: 64, at: [250, 205] }
+    },
     items: [
       { time: "08:00", end: "09:00", act: "早餐、退房", loc: "The First70 Hotel", maps: [{ q: Q.first70 }] },
       { time: "09:00", end: "10:00", act: "開車前往茶博物館", loc: "O’Sulloc 茶博物館", mode: "car", maps: [{ q: Q.osulloc }] },
@@ -674,9 +773,9 @@ const DAYS = [
       { time: "11:30", end: "12:05", act: "麵包、咖啡", loc: "濟州堂 제주당", maps: [{ q: Q.jejudang }] },
       { time: "12:05", end: "12:20", act: "開車前往可愛紀念品店", loc: "무무제주 Mumu Jeju", mode: "car", maps: [{ q: Q.mumu }] },
       { time: "12:20", end: "12:50", art: "gift", act: "可愛紀念品店", loc: "무무제주 Mumu Jeju", maps: [{ q: Q.mumu }] },
-      { time: "12:50", end: "13:05", act: "開車前往涯月", loc: "涯月海岸", mode: "car", maps: [{ q: Q.aewol }] },
+      { time: "12:50", end: "13:05", act: "開車前往涯月", loc: "涯月咖啡街", mode: "car", maps: [{ q: Q.aewol }] },
       { time: "13:05", end: "14:05", art: "fish", act: "午餐：整套帶魚料理", loc: "제주광해 애월본점", maps: [{ q: Q.gwanghae }] },
-      { time: "14:05", end: "14:50", act: "海岸散步、拍照", loc: "涯月海岸", maps: [{ q: Q.aewol }] },
+      { time: "14:05", end: "14:50", act: "海岸散步、拍照", loc: "涯月海岸", maps: [{ q: Q.aewolCoast }] },
       { time: "14:50", end: "15:10", act: "開車前往還車處", loc: "LOTTE Rent-a-Car", mode: "car", maps: [{ q: Q.lotte }] },
       { time: "15:10", end: "15:55", art: "fuel", act: "加油、還車", loc: "LOTTE Rent-a-Car Auto House", maps: [{ q: Q.lotte }],
         note: "租車確認信：最晚還車時間 10/31 20:00" },
@@ -691,6 +790,20 @@ const DAYS = [
   {
     date: "2026-11-01", md: "11/1", wd: "日",
     title: "濟州市區購物・返台",
+    route: {
+      view: { n: 33.528, s: 33.466, w: 126.470, e: 126.540 }, miniAt: [8, 8],
+      stops: [
+        { name: "大同酒店", ll: [33.5138, 126.5271], items: [0, 10], lab: "e" },
+        { name: "東門市場", ll: [33.5115, 126.5263], items: [1], lab: "s" },
+        { name: "柑橘蕎麥麵", ll: [33.5154, 126.5186], items: [3], lab: "n" },
+        { name: "樂天超市", ll: [33.4825, 126.4814], items: [5], lab: "s" },
+        { name: "七星路", ll: [33.5132, 126.5251], items: [7, 9], lab: "sw" },
+        { name: "豚香氣", ll: [33.5158, 126.5271], items: [8], lab: "n" },
+        { name: "濟州機場", ll: [33.5071, 126.4934], items: [12], lab: "n" }
+      ],
+      path: [[null, 1], ["walk", 2], ["walk", 3], ["taxi", 4, 0.07], ["taxi", 5, 0.07], ["walk", 6], ["walk", 5], ["walk", 1], ["taxi", 7]],
+      lens: { name: "濟州市區", stops: [1, 2, 3, 5, 6], center: [33.5137, 126.5229], m: 2.5, r: 62, at: [220, 284] }
+    },
     items: [
       { time: "09:30", end: "10:00", act: "起床、早餐、整理行李", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] },
       { time: "10:00", end: "10:45", art: "crate", act: "市場採買、伴手禮", loc: "東門市場", maps: [{ q: Q.dongmun }] },
@@ -758,6 +871,12 @@ const DAY_ART = [
      <path d="M56 24c3-5 9-5 11-2-3 4-8 5-11 2z" fill="#B9DAA5" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
      <circle cx="52" cy="34" r="1.5" fill="#3E3A39"/><circle cx="60" cy="34" r="1.5" fill="#3E3A39"/></g>`
 ];
+
+/* 海岸線（OpenStreetMap 島嶼輪廓簡化）：每兩個數字一組，緯度 33.xxxx、經度 126.xxxx 只存小數部分 */
+const GEO = {
+  jeju: "2926,1606,2596,1828,2458,2021,2361,2344,2170,2473,2096,2631,1992,2618,1952,2699,2009,2842,2045,2902,2204,2951,2404,3261,2348,3354,2375,3439,2368,3606,2305,3694,2449,4077,2335,4326,2412,4546,2265,4795,2271,4920,2326,4911,2307,5081,2413,5209,2410,5592,2353,5673,2449,5716,2446,5860,2361,5996,2427,6196,2521,6237,2570,6402,2659,6421,2696,6526,2693,6914,2818,7334,2780,7430,3070,7775,3023,8066,3071,8304,3210,8481,3291,8368,3412,8592,3826,8805,3914,9060,4034,9029,4273,9197,4341,9160,4343,9243,4272,9232,4233,9296,4300,9358,4395,9223,4535,9254,4608,9344,4641,9363,4736,9353,4694,9205,4818,9019,4905,9122,5028,9139,5105,9076,5101,8994,5203,9031,5285,8912,5250,8585,5326,8515,5335,8411,5432,8282,5590,8268,5553,7981,5648,7838,5656,7653,5584,7617,5547,7388,5603,7378,5604,7301,5484,6887,5525,6783,5428,6671,5525,6533,5490,6481,5555,6442,5360,6346,5377,5974,5251,5832,5274,5621,5242,5535,5244,5466,5279,5460,5279,5435,5236,5397,5225,5404,5219,5389,5231,5372,5225,5364,5213,5375,5198,5353,5197,5332,5187,5335,5177,5309,5204,5286,5181,5280,5193,5173,5157,5147,5175,5007,5201,4990,5210,4940,5198,4931,5196,4898,5173,4859,5108,4828,5091,4780,5098,4736,5090,4698,5099,4683,5086,4661,5072,4659,5068,4638,5031,4630,5042,4601,5044,4536,4977,4525,4959,4272,4833,4005,4891,3856,4666,3347,4687,3122,4472,2997,4440,2800,4348,2733,4350,2619,4250,2642,4216,2572,4164,2629,4009,2501,3893,2340,3909,2219,3754,2133,3586,1805,3458,1787,3422,1663,3341,1616,2990,1675",
+  udo: "5065,9412,5036,9416,5024,9433,4980,9445,4965,9445,4951,9436,4932,9476,4939,9487,4924,9513,4912,9562,4929,9598,4923,9607,4915,9603,4909,9609,4902,9628,4910,9637,4895,9633,4892,9643,4899,9649,4895,9656,4922,9678,4970,9667,4974,9678,4966,9691,4988,9712,5004,9703,5025,9706,5029,9683,5093,9673,5108,9658,5139,9645,5138,9622,5131,9618,5132,9599,5127,9594,5137,9581,5155,9576,5156,9582,5178,9588,5176,9600,5181,9605,5177,9609,5187,9621,5185,9610,5202,9602,5199,9588,5220,9575,5229,9580,5233,9555,5244,9557,5253,9547,5244,9533,5251,9527,5246,9513,5239,9523,5231,9511,5227,9483,5214,9486,5202,9478,5193,9495,5180,9495,5182,9503,5177,9508,5171,9500,5178,9488,5149,9491,5128,9444,5097,9427,5081,9436"
+};
 
 /* ===================== 工具 ===================== */
 const $ = (id) => document.getElementById(id);
@@ -899,12 +1018,12 @@ function locHtml(it) {
   return `<p class="tl-loc">${icon("i-pin", "pin")}${esc(it.loc)}</p>${chips}`;
 }
 
-function itemHtml(it) {
+function itemHtml(it, id) {
   const kind = it.kind || (it.mode ? "move" : "");
   const tags = [];
   if (it.mode) tags.push(`<span class="pill t-${it.mode}">${MODE_LABEL[it.mode]}</span>`);
   return `
-    <li class="tl-item ${kind ? "k-" + kind : ""}">
+    <li class="tl-item ${kind ? "k-" + kind : ""}"${id ? ` id="${id}"` : ""}>
       <span class="tl-dot" aria-hidden="true"></span>
       <div class="tl-time">${timeHtml(it)}</div>
       <div class="tl-box">
@@ -918,6 +1037,200 @@ function itemHtml(it) {
       </div>
     </li>`;
 }
+
+/* ===================== 每日路線圖（手繪示意，北方朝上） ===================== */
+const RM_W = 340;                                  // 路線圖 viewBox 寬度
+const RM_COS = Math.cos(33.4 * Math.PI / 180);     // 經度方向的距離修正
+const RM_MIN = 26;                                 // 相鄰景點最小間距（太近時略為拉開，方向不變）
+const RM_MODES = {
+  car: { core: "#F6D27A", label: "開車" },
+  taxi: { core: "#F2A497", label: "計程車" },
+  ebike: { core: "#B9DAA5", label: "電動腳踏車" },
+  bus: { core: "#FFFFFF", label: "接駁車" },
+  walk: { dash: "0.1 6.5", label: "步行" },
+  ferry: { dash: "7 5", label: "渡輪" },
+  none: {}
+};
+const geoPts = (str) => {
+  const n = str.split(",").map(Number), out = [];
+  for (let i = 0; i < n.length; i += 2) out.push([33 + n[i] / 1e4, 126 + n[i + 1] / 1e4]);
+  return out;
+};
+const GEO_PTS = { jeju: geoPts(GEO.jeju), udo: geoPts(GEO.udo) };
+const f1 = (v) => Math.round(v * 10) / 10;
+
+function rmProjector(v) {
+  const k = RM_W / ((v.e - v.w) * RM_COS);
+  return { k, h: Math.round((v.n - v.s) * k), p: (ll) => [(ll[1] - v.w) * RM_COS * k, (v.n - ll[0]) * k] };
+}
+// 海岸線：投影後用 Chaikin 圓角化兩次，看起來像手繪
+function ringPath(pts, p) {
+  let q = pts.map(p);
+  for (let t = 0; t < 2; t++) {
+    const o = [];
+    q.forEach((a, i) => { const b = q[(i + 1) % q.length]; o.push([a[0] * .75 + b[0] * .25, a[1] * .75 + b[1] * .25], [a[0] * .25 + b[0] * .75, a[1] * .25 + b[1] * .75]); });
+    q = o;
+  }
+  return "M" + q.map((a) => a.map(f1).join(" ")).join("L") + "Z";
+}
+
+// 太近的點互相推開：沿著兩點「實際」的方向推，所以相對方位不變（只在示意圖上拉開）
+function relax(pos, keys) {
+  const orig = {};
+  keys.forEach((k) => { orig[k] = pos[k].slice(); });
+  for (let t = 0; t < 80; t++) {
+    for (let a = 0; a < keys.length; a++) for (let b = a + 1; b < keys.length; b++) {
+      const A = pos[keys[a]], B = pos[keys[b]];
+      const d = Math.hypot(B[0] - A[0], B[1] - A[1]);
+      if (d >= RM_MIN) continue;
+      let ux = orig[keys[b]][0] - orig[keys[a]][0], uy = orig[keys[b]][1] - orig[keys[a]][1];
+      const ul = Math.hypot(ux, uy);
+      if (ul < 0.01) { ux = 1; uy = 0; } else { ux /= ul; uy /= ul; }
+      const push = (RM_MIN - d) / 2 + 0.2;
+      A[0] -= ux * push; A[1] -= uy * push;
+      B[0] += ux * push; B[1] += uy * push;
+    }
+  }
+}
+
+// 一段路線：略彎的手繪曲線＋中段的方向箭頭
+function legSvg(A, B, mode, bend) {
+  const dx = B[0] - A[0], dy = B[1] - A[1], len = Math.hypot(dx, dy);
+  if (len < 1) return "";
+  const c = [(A[0] + B[0]) / 2 - dy / len * len * bend, (A[1] + B[1]) / 2 + dx / len * len * bend];
+  const d = `M${f1(A[0])} ${f1(A[1])}Q${f1(c[0])} ${f1(c[1])} ${f1(B[0])} ${f1(B[1])}`;
+  const m = RM_MODES[mode] || RM_MODES.none;
+  let h;
+  if (m.core) h = `<path d="${d}" class="rm-case"/><path d="${d}" class="rm-core" stroke="${m.core}"/>`;
+  else if (m.dash) h = `<path d="${d}" class="rm-line" stroke-dasharray="${m.dash}"/>`;
+  else h = `<path d="${d}" class="rm-thin"/>`;
+  if (len >= 18) {
+    const t = 0.55, u = 1 - t;
+    const x = u * u * A[0] + 2 * u * t * c[0] + t * t * B[0], y = u * u * A[1] + 2 * u * t * c[1] + t * t * B[1];
+    const tx = 2 * u * (c[0] - A[0]) + 2 * t * (B[0] - c[0]), ty = 2 * u * (c[1] - A[1]) + 2 * t * (B[1] - c[1]);
+    const ang = Math.atan2(ty, tx) * 180 / Math.PI;
+    h += `<path d="M-6 -4 5 0-6 4z" class="rm-arrow" transform="translate(${f1(x)} ${f1(y)}) rotate(${f1(ang)})"/>`;
+  }
+  return h;
+}
+
+const LAB_OFF = { n: [0, -17, "middle"], s: [0, 26, "middle"], e: [16, 5, "start"], w: [-16, 5, "end"],
+  ne: [12, -12, "start"], nw: [-12, -12, "end"], se: [12, 22, "start"], sw: [-12, 22, "end"] };
+
+function stopSvg(st, n, xy, kind, di) {
+  const [ox, oy, anchor] = LAB_OFF[st.lab || "e"];
+  const [x, y] = xy.map(f1);
+  return `<a class="rm-stop" href="#d${di + 1}-i${st.items[0]}" data-target="d${di + 1}-i${st.items[0]}" aria-label="${n}. ${esc(st.name)}，跳到時間軸">
+      <circle cx="${x}" cy="${y}" r="10.5" class="rm-node k-${kind}"/>
+      ${kind === "end" ? `<circle cx="${x}" cy="${y}" r="14.5" class="rm-ring"/>` : ""}
+      <text x="${x}" y="${f1(y + 4.3)}" class="rm-num">${n}</text>
+      <text x="${f1(x + ox)}" y="${f1(y + oy)}" text-anchor="${anchor}" class="rm-lab">${esc(st.name)}</text>
+    </a>`;
+}
+
+function routeMapHtml(d, di) {
+  const r = d.route;
+  if (!r) return "";
+  const P = rmProjector(r.view), H = P.h;
+  const lens = r.lens, inLens = new Set(lens ? lens.stops : []);
+  const pos = {}, lpos = {};
+  r.stops.forEach((st, i) => { pos[i + 1] = P.p(st.ll); });
+  const mainKeys = r.stops.map((_, i) => i + 1).filter((n) => !inLens.has(n));
+  relax(pos, mainKeys);
+  r.stops.forEach((st, i) => { if (st.nudge) { pos[i + 1][0] += st.nudge[0]; pos[i + 1][1] += st.nudge[1]; } });
+
+  // 放大圈：圈內景點用放大後的位置
+  let L = null;
+  if (lens) {
+    const c = P.p(lens.center);
+    L = { c, at: lens.at, m: lens.m, r: lens.r, t: (ll) => { const q = P.p(ll); return [lens.at[0] + (q[0] - c[0]) * lens.m, lens.at[1] + (q[1] - c[1]) * lens.m]; } };
+    lens.stops.forEach((n) => { lpos[n] = L.t(r.stops[n - 1].ll); });
+    relax(lpos, lens.stops);
+  }
+
+  // 起點、終點、途中
+  const first = r.path[0][1], last = r.path[r.path.length - 1][1];
+  const kindOf = (n) => (n === last ? "end" : n === first ? "start" : "mid");
+
+  // 路線
+  let legsMain = "", legsLens = "";
+  const used = new Set();
+  for (let i = 1; i < r.path.length; i++) {
+    const a = r.path[i - 1][1], [mode, b, bendOpt] = r.path[i];
+    used.add(mode);
+    const bend = bendOpt == null ? 0.14 : bendOpt;
+    if (inLens.has(a) && inLens.has(b)) legsLens += legSvg(lpos[a], lpos[b], mode, bend);
+    else {
+      // 進出放大圈的路線（例如渡輪）：主圖畫到實際位置，圈內也畫一段，看得出從哪個港口上岸
+      const pa = inLens.has(a) ? P.p(r.stops[a - 1].ll) : pos[a], pb = inLens.has(b) ? P.p(r.stops[b - 1].ll) : pos[b];
+      legsMain += legSvg(pa, pb, mode, bend);
+      if (L && lens.stubs) legsLens += legSvg(inLens.has(a) ? lpos[a] : L.t(r.stops[a - 1].ll), inLens.has(b) ? lpos[b] : L.t(r.stops[b - 1].ll), mode, bend);
+    }
+  }
+
+  const island = ringPath(GEO_PTS.jeju, P.p), udo = ringPath(GEO_PTS.udo, P.p);
+  const halla = P.p([33.3617, 126.5292]);
+  const showHalla = halla[0] > 20 && halla[0] < RM_W - 20 && halla[1] > 20 && halla[1] < H - 20 && !r.hideHalla;
+
+  // 全島小地圖（右下角），框出這張圖的範圍
+  const mini = rmProjector({ n: 33.58, s: 33.18, w: 126.14, e: 126.98 });
+  const ms = 78 / RM_W, mx = r.miniAt ? r.miniAt[0] : RM_W - 86, my = r.miniAt ? r.miniAt[1] : H - mini.h * ms - 8;
+  const v = r.view, a0 = mini.p([v.n, v.w]), a1 = mini.p([v.s, v.e]);
+  const miniSvg = `<g class="rm-mini" transform="translate(${f1(mx)} ${f1(my)}) scale(${ms})">
+      <rect x="-14" y="-14" width="${RM_W + 28}" height="${mini.h + 28}" rx="30" class="rm-mini-bg"/>
+      <path d="${ringPath(GEO_PTS.jeju, mini.p)}" class="rm-mini-land"/>
+      <rect x="${f1(Math.max(a0[0], -6))}" y="${f1(Math.max(a0[1], -6))}" width="${f1(Math.min(a1[0], RM_W + 6) - Math.max(a0[0], -6))}" height="${f1(Math.min(a1[1], mini.h + 6) - Math.max(a0[1], -6))}" class="rm-mini-box"/>
+    </g>`;
+
+  let lensSvg = "";
+  if (L) {
+    const cid = `rmclip-${di}`;
+    const lt = (ll) => L.t(ll);
+    lensSvg = `
+      <circle cx="${f1(L.c[0])}" cy="${f1(L.c[1])}" r="${f1(L.r / L.m + 3)}" class="rm-lens-src"/>
+      <path d="M${f1(L.c[0])} ${f1(L.c[1])}L${f1(L.at[0])} ${f1(L.at[1])}" class="rm-lens-link"/>
+      <clipPath id="${cid}"><circle cx="${L.at[0]}" cy="${L.at[1]}" r="${L.r}"/></clipPath>
+      <circle cx="${L.at[0]}" cy="${L.at[1]}" r="${L.r}" class="rm-lens-bg"/>
+      <g clip-path="url(#${cid})"><rect x="${L.at[0] - L.r}" y="${L.at[1] - L.r}" width="${2 * L.r}" height="${2 * L.r}" class="rm-sea"/><path d="${ringPath(GEO_PTS.udo, lt)}" class="rm-land"/><path d="${ringPath(GEO_PTS.jeju, lt)}" class="rm-land"/>${legsLens}</g>
+      <circle cx="${L.at[0]}" cy="${L.at[1]}" r="${L.r}" class="rm-lens-rim"/>
+      <text x="${L.at[0]}" y="${f1(L.at[1] - L.r - 7)}" text-anchor="middle" class="rm-lens-name">${esc(lens.name)}（放大）</text>`;
+  }
+
+  const stopsMain = mainKeys.map((n) => stopSvg(r.stops[n - 1], n, pos[n], kindOf(n), di)).join("");
+  const stopsLens = lens ? lens.stops.map((n) => stopSvg(r.stops[n - 1], n, lpos[n], kindOf(n), di)).join("") : "";
+
+  const legend = [...used].filter((m) => RM_MODES[m] && RM_MODES[m].label).map((m) => {
+    const md = RM_MODES[m];
+    const sample = md.core
+      ? `<path d="M3 7h26" class="rm-case"/><path d="M3 7h26" class="rm-core" stroke="${md.core}"/>`
+      : `<path d="M3 7h26" class="rm-line" stroke-dasharray="${md.dash}"/>`;
+    return `<span class="rm-key"><svg viewBox="0 0 32 14" aria-hidden="true">${sample}</svg>${md.label}</span>`;
+  }).join("");
+
+  return `
+    <figure class="route-map">
+      <figcaption class="rm-cap">今日路線<span class="rm-cap-sub">點編號可跳到行程</span></figcaption>
+      <svg viewBox="0 0 ${RM_W} ${H}" role="img" aria-label="${esc(dayName(di))}路線示意圖：${r.path.map((p) => esc(r.stops[p[1] - 1].name)).join(" → ")}">
+        <rect width="${RM_W}" height="${H}" class="rm-sea"/>
+        <path d="${island}" class="rm-land"/>
+        <path d="${udo}" class="rm-land"/>
+        ${showHalla ? `<g class="rm-halla" transform="translate(${f1(halla[0])} ${f1(halla[1])})"><path d="M-15 8-4-8q4-4 8 0L15 8z"/><path d="M-7-3q3 2 7 0t7 0" class="snow"/><text y="22" text-anchor="middle">漢拏山</text></g>` : ""}
+        ${miniSvg}
+        <g class="rm-compass" transform="translate(${RM_W - 22} 24)"><path d="M0-13 6 6 0 2-6 6z"/><text y="-17" text-anchor="middle">N</text></g>
+        ${legsMain}
+        ${lensSvg}
+        ${stopsMain}
+        ${stopsLens}
+      </svg>
+      <div class="rm-legend">
+        <span class="rm-key"><i class="rm-dot k-start"></i>起點</span>
+        <span class="rm-key"><i class="rm-dot k-mid"></i>途中</span>
+        <span class="rm-key"><i class="rm-dot k-end"></i>終點</span>
+        ${legend}
+      </div>
+    </figure>`;
+}
+
 
 function dayHtml(d, i) {
   const st = d.stay;
@@ -933,13 +1246,14 @@ function dayHtml(d, i) {
           <h3 id="day-${i + 1}-h">${d.title.split("・").map((s) => `<span class="nowrap">${esc(s)}</span>`).join("・")}</h3>
         </div>
       </div>
-      <ol class="tl">${d.items.map(itemHtml).join("")}</ol>
+      ${routeMapHtml(d, i)}
+      <ol class="tl">${d.items.map((it, j) => itemHtml(it, `d${i + 1}-i${j}`)).join("")}</ol>
       ${stayHtml}
       ${d.planB ? `
       <details class="planb">
         <summary>${esc(d.planB.title)}<span class="planb-hint">點開查看</span></summary>
         <p class="planb-note">${esc(d.planB.note)}</p>
-        <ol class="tl">${d.planB.items.map(itemHtml).join("")}</ol>
+        <ol class="tl">${d.planB.items.map((it) => itemHtml(it)).join("")}</ol>
       </details>` : ""}
     </article>`;
 }
@@ -949,6 +1263,21 @@ function initDays() {
   const todayIdx = s.phase === "during" ? s.day - 1 : -1;
   renderTabs(todayIdx);
   $("dayList").innerHTML = DAYS.map(dayHtml).join("");
+
+  // 路線圖：點景點編號 → 捲到時間軸對應項目並短暫標示
+  $("dayList").addEventListener("click", (e) => {
+    const a = e.target.closest(".rm-stop");
+    if (!a) return;
+    e.preventDefault();
+    const li = $(a.dataset.target);
+    if (!li) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    li.scrollIntoView({ block: "center", behavior: reduce ? "instant" : "smooth" });
+    li.classList.remove("flash");
+    void li.offsetWidth;
+    li.classList.add("flash");
+    setTimeout(() => li.classList.remove("flash"), 2200);
+  });
 
   const tabs = $("dayTabs");
   const tabEls = [...tabs.querySelectorAll(".tab")];
