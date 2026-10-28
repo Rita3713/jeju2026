@@ -637,14 +637,15 @@ const Q = {
   mumu: "무무제주",
   daedong: "Daedong Hotel Jeju",
   dongmun: "동문시장 관덕로14길 20",
-  badang: "바당국수 서귀포",
   ujin: "우진해장국 제주",
   donhyanggi: "돈향기 관덕로15길 30",
   dotoree: "도토리키친 제주",
   jungang: "Jeju Jungang Underground Shopping Center",
   chilseong: "Chilseong-ro Shopping Street Jeju",
   lotteMart: "LOTTE Mart Jeju",
-  olive: "올리브영 관덕로 62-1"
+  olive: "올리브영 관덕로 62-1",
+  noraba: "노라바 애월해안로 570-1",
+  sukseong: "숙성도 중문점 일주서로 1101"
 };
 
 const DAYS = [
@@ -690,102 +691,112 @@ const DAYS = [
   },
   {
     date: "2026-10-30", md: "10/30", wd: "五",
-    title: "城山日出峰・牛島",
+    title: "涯月海岸・咖啡街・茶博物館",
     route: {
-      view: { n: 33.66, s: 33.21, w: 126.40, e: 127.02 },
+      view: { n: 33.58, s: 33.21, w: 126.20, e: 126.72 }, miniAt: [8, 8],
       stops: [
         { name: "多情家紫菜飯捲", ll: [33.2494, 126.5668], items: [0], lab: "n" },
-        { name: "城山日出峰", ll: [33.4581, 126.9425], items: [2], lab: "s" },
-        { name: "城山港", ll: [33.4729, 126.9346], items: [4], lab: "w" },
-        { name: "下牛目洞港", ll: [33.5096, 126.9424], items: [6, 12], lab: "w" },
-        { name: "西濱白沙", ll: [33.5023, 126.9433], items: [7], lab: "s" },
-        { name: "海女餐廳", ll: [33.5146, 126.9491], items: [8], lab: "nw" },
-        { name: "Udo Sand", ll: [33.5162, 126.9576], items: [9], lab: "ne" },
-        { name: "下高水洞海灘", ll: [33.5151, 126.9584], items: [10], lab: "e" },
-        { name: "第一70飯店", ll: [33.2473, 126.5669], items: [14, 16], lab: "e" },
-        { name: "바당국수", ll: [33.2504, 126.5656], items: [15], lab: "w" }
+        { name: "涯月海岸", ll: [33.4835, 126.3764], items: [2], lab: "s" },
+        { name: "帶魚料理", ll: [33.4878, 126.3904], items: [3], lab: "e" },
+        { name: "涯月咖啡街", ll: [33.4623, 126.3103], items: [5], lab: "n" },
+        { name: "Mumu Jeju", ll: [33.4190, 126.3114], items: [7], lab: "e" },
+        { name: "濟州堂", ll: [33.3542, 126.3559], items: [9], lab: "e" },
+        { name: "O’Sulloc 茶博物館", ll: [33.3059, 126.2894], items: [11], lab: "s" },
+        { name: "熟成到", ll: [33.2631, 126.3956], items: [13], lab: "s" },
+        { name: "第一70飯店", ll: [33.2473, 126.5669], items: [15], lab: "e" }
       ],
-      path: [[null, 1], ["car", 2], ["car", 3], ["ferry", 4], ["ebike", 5], ["ebike", 6], ["ebike", 7], ["ebike", 8], ["ebike", 4], ["ferry", 3], ["car", 9], ["walk", 10], ["walk", 9]],
-      lens: { name: "牛島", stubs: true, stops: [4, 5, 6, 7, 8], center: [33.5075, 126.9555], m: 4, r: 64, at: [168, 90] }
+      path: [[null, 1], ["car", 2, -0.12], ["car", 3], ["car", 4], ["car", 5], ["car", 6], ["car", 7], ["car", 8], ["car", 9]]
     },
     items: [
       { time: "08:00", end: "09:00", art: "gimbap", act: "早餐", loc: "多情家紫菜飯捲 다정이네김밥", mode: "walk", maps: [{ q: Q.dajeong }] },
-      { time: "09:00", end: "10:00", act: "開車前往城山日出峰", loc: "城山日出峰", mode: "car", maps: [{ q: Q.ilchulbong }] },
-      { time: "10:00", end: "11:30", act: "登城山日出峰", loc: "城山日出峰", maps: [{ q: Q.ilchulbong }] },
-      { time: "11:30", end: "11:40", act: "開車前往港口", loc: "城山港", mode: "car", maps: [{ q: Q.seongsan }] },
-      { time: "11:40", end: "12:00", act: "購票、候船", loc: "城山港", maps: [{ q: Q.seongsan }] },
-      { time: "12:00", end: "12:30", act: "搭船前往牛島", loc: "城山港 → 下牛目洞港", mode: "ferry", kind: "ferry", maps: [{ label: "下牛目洞港", q: Q.haumok }],
-        note: "建議搭往下牛目洞港的船；若只有往天津港的船也可以，回程多騎約 1 公里" },
-      { time: "12:30", end: "12:45", act: "租電動腳踏車", loc: "下牛目洞港附近租車店", maps: [{ label: "搜尋牛島電動腳踏車出租", q: "우도 전기자전거 대여" }],
-        note: "回程在同一家店還車" },
-      { time: "12:45", end: "13:15", act: "西濱白沙（珊瑚沙海灘）", loc: "西濱白沙 서빈백사", mode: "ebike", maps: [{ q: Q.seobin }] },
-      { time: "13:15", end: "14:00", art: "shell", act: "午餐：海鮮料理", loc: "牛島海女餐廳", maps: [{ q: Q.udoHaenyeo }] },
-      { time: "14:00", end: "14:30", art: "icecream", act: "花生冰淇淋", loc: "Udo Sand 우도샌드", maps: [{ q: Q.udoSand }] },
-      { time: "14:30", end: "15:00", act: "下高水洞海灘、海景咖啡廳", loc: "下高水洞海灘、Blanc Rocher 블랑로쉐", mode: "ebike",
-        maps: [{ label: "下高水洞海灘", q: Q.hagosu }, { label: "Blanc Rocher", q: Q.blanc }] },
-      { time: "15:00", end: "15:15", act: "騎回港口", loc: "下牛目洞港", mode: "ebike", maps: [{ q: Q.haumok }] },
-      { time: "15:15", end: "15:30", act: "還電動腳踏車", loc: "租車店（下牛目洞港）", maps: [{ label: "搜尋牛島電動腳踏車出租", q: "우도 전기자전거 대여" }] },
-      { time: "15:30", end: "16:00", act: "搭船返回", loc: "下牛目洞港 → 城山港", mode: "ferry", kind: "ferry", maps: [{ label: "城山港", q: Q.seongsan }] },
-      { time: "16:00", end: "17:00", act: "開車返回飯店", loc: "西歸浦", mode: "car", maps: [{ q: Q.seogwipo }] },
-      { time: "18:00", end: "19:00", act: "晚餐：韓式湯飯或麵食", loc: "바당국수", maps: [{ q: Q.badang }] },
-      { time: "19:00", open: true, act: "回飯店休息", loc: "The First70 Hotel", maps: [{ q: Q.first70 }] }
+      { time: "09:00", end: "10:00", act: "開車前往涯月", loc: "涯月海岸", mode: "car", maps: [{ q: Q.aewolCoast }] },
+      { time: "10:00", end: "10:40", act: "海岸散步、拍照", loc: "涯月海岸", maps: [{ q: Q.aewolCoast }] },
+      { time: "10:45", end: "11:45", art: "fish", act: "午餐：整套帶魚料理", loc: "제주광해 애월본점", mode: "car",
+        maps: [{ label: "제주광해 애월본점", q: Q.gwanghae }, { label: "備案：노라바 Noraba", q: Q.noraba }],
+        note: "備案：노라바 海鮮拉麵，只營業到 14:00" },
+      { time: "11:45", end: "12:00", act: "開車前往涯月咖啡街", loc: "涯月咖啡街", mode: "car", maps: [{ q: Q.aewol }] },
+      { time: "12:00", end: "13:00", act: "咖啡街散步、喝咖啡", loc: "涯月咖啡街", maps: [{ q: Q.aewol }] },
+      { time: "13:00", end: "13:10", act: "開車前往可愛紀念品店", loc: "무무제주 Mumu Jeju", mode: "car", maps: [{ q: Q.mumu }] },
+      { time: "13:10", end: "13:40", art: "gift", act: "可愛紀念品店", loc: "무무제주 Mumu Jeju", maps: [{ q: Q.mumu }] },
+      { time: "13:40", end: "14:00", act: "開車前往濟州堂", loc: "濟州堂 제주당", mode: "car", maps: [{ q: Q.jejudang }] },
+      { time: "14:00", end: "14:30", act: "買麵包", loc: "濟州堂 제주당", maps: [{ q: Q.jejudang }] },
+      { time: "14:30", end: "14:45", act: "開車前往茶博物館", loc: "O’Sulloc 茶博物館", mode: "car", maps: [{ q: Q.osulloc }] },
+      { time: "14:45", end: "16:00", act: "參觀、喝茶、吃甜點", loc: "O’Sulloc 茶博物館", maps: [{ q: Q.osulloc }] },
+      { time: "16:00", end: "16:20", act: "開車前往晚餐地點", loc: "熟成到 中文店 숙성도 중문점", mode: "car", maps: [{ q: Q.sukseong }] },
+      { time: "16:20", end: "17:45", art: "pork", act: "晚餐：黑豬肉", loc: "熟成到 中文店 숙성도 중문점", maps: [{ q: Q.sukseong }] },
+      { time: "17:45", end: "18:10", act: "開車回飯店", loc: "西歸浦", mode: "car", maps: [{ q: Q.first70 }] },
+      { time: "18:10", open: true, act: "回飯店休息", loc: "The First70 Hotel", maps: [{ q: Q.first70 }] }
     ],
-    stay: { name: "第一70飯店 The First70 Hotel", area: "西歸浦", q: Q.first70 },
-    planB: {
-      title: "雨天備案：牛島渡輪停駛時",
-      note: "牛島渡輪遇到強風或大浪會停駛，出發前先向城山港確認。早餐、城山日出峰與晚餐不變，以下行程取代 11:30 之後的牛島行程。",
-      items: [
-        { time: "11:30", end: "11:45", act: "開車前往光之地堡", loc: "光之地堡 빛의 벙커", mode: "car", maps: [{ q: Q.bunker }] },
-        { time: "11:45", end: "13:00", act: "光之地堡（沉浸式光影藝術展）", loc: "光之地堡 빛의 벙커", maps: [{ q: Q.bunker }] },
-        { time: "13:00", end: "14:00", act: "午餐：城山周邊海鮮", loc: "城山港周邊", maps: [{ label: "搜尋城山港附近餐廳", q: "restaurants near Seongsan Port Jeju" }] },
-        { time: "14:00", end: "14:15", act: "開車前往濟州水上星球", loc: "濟州水上星球 아쿠아플라넷 제주", mode: "car", maps: [{ q: Q.aqua }] },
-        { time: "14:15", end: "16:15", act: "濟州水上星球（水族館）", loc: "濟州水上星球 아쿠아플라넷 제주", maps: [{ q: Q.aqua }] },
-        { time: "16:15", end: "17:15", act: "開車返回飯店", loc: "西歸浦", mode: "car", maps: [{ q: Q.seogwipo }] }
-      ]
-    }
+    stay: { name: "第一70飯店 The First70 Hotel", area: "西歸浦", q: Q.first70 }
   },
   {
     date: "2026-10-31", md: "10/31", wd: "六",
-    title: "茶博物館・涯月海岸・還車",
+    title: "牛島・城山日出峰・還車",
     route: {
-      view: { n: 33.58, s: 33.21, w: 126.20, e: 126.63 }, miniAt: [8, 8], hideHalla: true,
+      view: { n: 33.72, s: 33.21, w: 126.40, e: 127.02 }, noMini: true, hideHalla: true,
       stops: [
-        { name: "第一70飯店", ll: [33.2473, 126.5669], items: [0], lab: "s" },
-        { name: "O’Sulloc 茶博物館", ll: [33.3059, 126.2894], items: [2], lab: "s" },
-        { name: "濟州堂", ll: [33.3542, 126.3559], items: [4], lab: "e" },
-        { name: "Mumu Jeju", ll: [33.4190, 126.3114], items: [6], lab: "w" },
-        { name: "帶魚料理", ll: [33.4878, 126.3904], items: [8], lab: "n" },
-        { name: "涯月海岸", ll: [33.4835, 126.3764], items: [9], lab: "w" },
-        { name: "還車", ll: [33.5090, 126.5024], items: [11], lab: "s" },
-        { name: "大同酒店", ll: [33.5138, 126.5271], items: [12, 16], lab: "n" },
-        { name: "東門市場", ll: [33.5115, 126.5263], items: [13], lab: "s" },
-        { name: "宇進解酒湯", ll: [33.5115, 126.5200], items: [14], lab: "s" },
-        { name: "Olive Young", ll: [33.5129, 126.5260], items: [15], lab: "nw" }
+        { name: "第一70飯店", ll: [33.2473, 126.5669], items: [0], lab: "w" },
+        { name: "城山港", ll: [33.4729, 126.9346], items: [2], lab: "w" },
+        { name: "下牛目洞港", ll: [33.5096, 126.9424], items: [4, 10], lab: "w" },
+        { name: "西濱白沙", ll: [33.5023, 126.9433], items: [5], lab: "s" },
+        { name: "下高水洞海灘", ll: [33.5151, 126.9584], items: [6], lab: "s" },
+        { name: "Udo Sand", ll: [33.5162, 126.9576], items: [7], lab: "e" },
+        { name: "海女餐廳", ll: [33.5146, 126.9491], items: [8], lab: "nw" },
+        { name: "城山日出峰", ll: [33.4581, 126.9425], items: [13], lab: "s" },
+        { name: "還車", ll: [33.5090, 126.5024], items: [15], lab: "w" },
+        { name: "大同酒店", ll: [33.5138, 126.5271], items: [16, 20], lab: "n" },
+        { name: "東門市場", ll: [33.5115, 126.5263], items: [17], lab: "s" },
+        { name: "宇進解酒湯", ll: [33.5115, 126.5200], items: [18], lab: "s" },
+        { name: "Olive Young", ll: [33.5129, 126.5260], items: [19], lab: "nw" }
       ],
-      path: [[null, 1], ["car", 2], ["car", 3], ["car", 4], ["car", 5], ["car", 6], ["car", 7, -0.3], ["none", 8], ["walk", 9], ["walk", 10], ["walk", 11], ["walk", 8]],
-      lens: { name: "濟州市區", stops: [8, 9, 10, 11], center: [33.5127, 126.5236], m: 18, r: 64, at: [250, 205] }
+      path: [[null, 1], ["car", 2, -0.1], ["ferry", 3], ["ebike", 4], ["ebike", 5], ["ebike", 6], ["ebike", 7], ["ebike", 3], ["ferry", 2], ["car", 8], ["car", 9], ["none", 10], ["walk", 11], ["walk", 12], ["walk", 13], ["walk", 10]],
+      lenses: [
+        { name: "牛島", stubs: true, stops: [3, 4, 5, 6, 7], center: [33.5075, 126.9555], m: 4, r: 54, at: [248, 80] },
+        { name: "濟州市區", stops: [10, 11, 12, 13], center: [33.5127, 126.5236], m: 22, r: 46, at: [95, 215] }
+      ]
     },
     items: [
-      { time: "08:00", end: "09:00", act: "早餐、退房", loc: "The First70 Hotel", maps: [{ q: Q.first70 }] },
-      { time: "09:00", end: "10:00", act: "開車前往茶博物館", loc: "O’Sulloc 茶博物館", mode: "car", maps: [{ q: Q.osulloc }] },
-      { time: "10:00", end: "11:15", act: "參觀、喝茶、吃甜點", loc: "O’Sulloc 茶博物館", maps: [{ q: Q.osulloc }] },
-      { time: "11:15", end: "11:30", act: "開車前往濟州堂", loc: "濟州堂 제주당", mode: "car", maps: [{ q: Q.jejudang }] },
-      { time: "11:30", end: "12:05", act: "麵包、咖啡", loc: "濟州堂 제주당", maps: [{ q: Q.jejudang }] },
-      { time: "12:05", end: "12:20", act: "開車前往可愛紀念品店", loc: "무무제주 Mumu Jeju", mode: "car", maps: [{ q: Q.mumu }] },
-      { time: "12:20", end: "12:50", art: "gift", act: "可愛紀念品店", loc: "무무제주 Mumu Jeju", maps: [{ q: Q.mumu }] },
-      { time: "12:50", end: "13:05", act: "開車前往涯月", loc: "涯月咖啡街", mode: "car", maps: [{ q: Q.aewol }] },
-      { time: "13:05", end: "14:05", art: "fish", act: "午餐：整套帶魚料理", loc: "제주광해 애월본점", maps: [{ q: Q.gwanghae }] },
-      { time: "14:05", end: "14:50", act: "海岸散步、拍照", loc: "涯月海岸", maps: [{ q: Q.aewolCoast }] },
-      { time: "14:50", end: "15:10", act: "開車前往還車處", loc: "LOTTE Rent-a-Car", mode: "car", maps: [{ q: Q.lotte }] },
-      { time: "15:10", end: "15:55", art: "fuel", act: "加油、還車", loc: "LOTTE Rent-a-Car Auto House", maps: [{ q: Q.lotte }],
+      { time: "07:30", end: "07:45", act: "退房、行李放上車", loc: "The First70 Hotel", maps: [{ q: Q.first70 }] },
+      { time: "07:45", end: "08:45", act: "開車前往城山港", loc: "城山港", mode: "car", maps: [{ q: Q.seongsan }] },
+      { time: "08:45", end: "09:00", act: "停車、購票", loc: "城山港", maps: [{ q: Q.seongsan }],
+        note: "港口停車場要付費；行李放後車廂，購票要帶護照" },
+      { time: "09:00", end: "09:15", act: "搭船前往牛島", loc: "城山港 → 下牛目洞港", mode: "ferry", kind: "ferry", maps: [{ label: "下牛目洞港", q: Q.haumok }],
+        note: "建議搭往下牛目洞港的船；若只有往天津港的船也可以，回程多騎約 1 公里" },
+      { time: "09:15", end: "09:30", act: "租電動腳踏車", loc: "下牛目洞港附近租車店", maps: [{ label: "搜尋牛島電動腳踏車出租", q: "우도 전기자전거 대여" }],
+        note: "回程在同一家店還車" },
+      { time: "09:30", end: "10:00", act: "西濱白沙（珊瑚沙海灘）", loc: "西濱白沙 서빈백사", mode: "ebike", maps: [{ q: Q.seobin }] },
+      { time: "10:05", end: "10:45", act: "下高水洞海灘、海景咖啡廳", loc: "下高水洞海灘、Blanc Rocher 블랑로쉐", mode: "ebike",
+        maps: [{ label: "下高水洞海灘", q: Q.hagosu }, { label: "Blanc Rocher", q: Q.blanc }] },
+      { time: "10:45", end: "11:15", art: "icecream", act: "花生冰淇淋", loc: "Udo Sand 우도샌드", maps: [{ q: Q.udoSand }] },
+      { time: "11:15", end: "12:00", art: "shell", act: "午餐：海鮮料理", loc: "牛島海女餐廳", mode: "ebike", maps: [{ q: Q.udoHaenyeo }] },
+      { time: "12:00", end: "12:15", act: "騎回港口", loc: "下牛目洞港", mode: "ebike", maps: [{ q: Q.haumok }] },
+      { time: "12:15", end: "12:30", act: "還電動腳踏車", loc: "租車店（下牛目洞港）", maps: [{ label: "搜尋牛島電動腳踏車出租", q: "우도 전기자전거 대여" }] },
+      { time: "12:30", end: "12:45", act: "搭船返回", loc: "下牛目洞港 → 城山港", mode: "ferry", kind: "ferry", maps: [{ label: "城山港", q: Q.seongsan }] },
+      { time: "12:45", end: "13:00", act: "開車前往城山日出峰", loc: "城山日出峰", mode: "car", maps: [{ q: Q.ilchulbong }] },
+      { time: "13:00", end: "14:30", act: "登城山日出峰", loc: "城山日出峰", maps: [{ q: Q.ilchulbong }] },
+      { time: "14:30", end: "15:40", act: "開車前往還車處", loc: "LOTTE Rent-a-Car", mode: "car", maps: [{ q: Q.lotte }] },
+      { time: "15:40", end: "16:25", art: "fuel", act: "加油、還車", loc: "LOTTE Rent-a-Car Auto House", maps: [{ q: Q.lotte }],
         note: "租車確認信：最晚還車時間 10/31 20:00" },
-      { time: "15:55", end: "16:30", act: "前往飯店、入住", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] },
-      { time: "16:30", end: "18:30", act: "逛街或休息", loc: "東門市場周邊", maps: [{ q: Q.dongmun }] },
+      { time: "16:25", end: "16:55", act: "前往飯店、入住", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] },
+      { time: "16:55", end: "18:30", act: "逛街或休息", loc: "東門市場周邊", maps: [{ q: Q.dongmun }] },
       { time: "18:30", end: "19:30", act: "晚餐", loc: "宇進解酒湯 우진해장국", maps: [{ q: Q.ujin }] },
       { time: "19:30", end: "20:30", act: "Olive Young", loc: "Olive Young 關德路店", mode: "walk", maps: [{ q: Q.olive }] },
       { time: "20:30", open: true, act: "回飯店休息", loc: "大同酒店 Daedong Hotel", maps: [{ q: Q.daedong }] }
     ],
-    stay: { name: "大同酒店 Daedong Hotel", area: "濟州市區", q: Q.daedong }
+    stay: { name: "大同酒店 Daedong Hotel", area: "濟州市區", q: Q.daedong },
+    planB: {
+      title: "雨天備案：牛島渡輪停駛時",
+      note: "牛島渡輪遇到強風或大浪會停駛，出發前先向城山港確認。還車與晚上行程不變，以下取代 08:45–14:30 的行程，14:30 之後照原本開車去還車。",
+      items: [
+        { time: "08:45", end: "09:00", act: "開車前往城山日出峰", loc: "城山日出峰", mode: "car", maps: [{ q: Q.ilchulbong }] },
+        { time: "09:00", end: "10:30", act: "登城山日出峰", loc: "城山日出峰", maps: [{ q: Q.ilchulbong }] },
+        { time: "10:30", end: "10:45", act: "開車前往光之地堡", loc: "光之地堡 빛의 벙커", mode: "car", maps: [{ q: Q.bunker }] },
+        { time: "10:45", end: "12:00", act: "光之地堡（沉浸式光影藝術展）", loc: "光之地堡 빛의 벙커", maps: [{ q: Q.bunker }] },
+        { time: "12:00", end: "13:00", act: "午餐：城山周邊海鮮", loc: "城山港周邊", maps: [{ label: "搜尋城山港附近餐廳", q: "restaurants near Seongsan Port Jeju" }] },
+        { time: "13:00", end: "13:15", act: "開車前往濟州水上星球", loc: "濟州水上星球 아쿠아플라넷 제주", mode: "car", maps: [{ q: Q.aqua }] },
+        { time: "13:15", end: "14:30", act: "濟州水上星球（水族館）", loc: "濟州水上星球 아쿠아플라넷 제주", maps: [{ q: Q.aqua }] }
+      ]
+    }
   },
   {
     date: "2026-11-01", md: "11/1", wd: "日",
@@ -848,14 +859,7 @@ const DAY_ART = [
    <path d="M12 26a6 6 0 0 1 11-3 5 5 0 0 1 8 4H12z" fill="#fff" stroke="#3E3A39" stroke-width="2.5" stroke-linejoin="round"/>
    ${SEA(58)}
    <g class="float"><path d="M20 46 56 33c3-1 4 3 1 4L41 44l-5 11-4-1 2-9-9 3z" fill="#fff" ${INK}/></g>`,
-  // 第二天：城山日出峰與牛島渡輪
-  `<rect width="80" height="80" fill="#E2F1F7"/>
-   <circle cx="62" cy="18" r="8" fill="#F6D27A" ${INK}/>
-   <path d="M8 56 18 34q12-6 24 0l10 22z" fill="#B9DAA5" ${INK}/>
-   <path d="M21 35q9 4 18 0" fill="none" ${INK}/>
-   ${SEA(56)}
-   <g class="bob"><path d="M44 63h26l-4 7H48z" fill="#fff" ${INK}/><rect x="51" y="55" width="12" height="8" rx="2" fill="#F2A497" ${INK}/></g>`,
-  // 第三天：O'Sulloc 綠茶
+  // 第二天：O'Sulloc 綠茶
   `<rect width="80" height="80" fill="#E6F2DE"/>
    <path d="M-2 68q20-8 42 0t42 0V84H-2z" fill="#B9DAA5" ${INK}/>
    <path d="M18 60h40" fill="none" ${INK}/>
@@ -863,6 +867,13 @@ const DAY_ART = [
    <path d="M26 40h22" fill="none" stroke="#B9DAA5" stroke-width="4" stroke-linecap="round"/>
    <path d="M52 39h3a5 5 0 0 1 0 10h-4" fill="none" ${INK}/>
    <g class="sway"><path d="M34 12c9-5 16-1 17 6-8 4-15 1-17-6z" fill="#B9DAA5" ${INK}/></g>`,
+  // 第三天：牛島渡輪與城山日出峰
+  `<rect width="80" height="80" fill="#E2F1F7"/>
+   <circle cx="62" cy="18" r="8" fill="#F6D27A" ${INK}/>
+   <path d="M8 56 18 34q12-6 24 0l10 22z" fill="#B9DAA5" ${INK}/>
+   <path d="M21 35q9 4 18 0" fill="none" ${INK}/>
+   ${SEA(56)}
+   <g class="bob"><path d="M44 63h26l-4 7H48z" fill="#fff" ${INK}/><rect x="51" y="55" width="12" height="8" rx="2" fill="#F2A497" ${INK}/></g>`,
   // 第四天：市區購物（購物袋與橘子）
   `<rect width="80" height="80" fill="#FBE3DE"/>
    <path d="M30 34v-5a8 8 0 0 1 16 0v5" fill="none" ${INK}/>
@@ -1132,72 +1143,73 @@ function routeMapHtml(d, di) {
   const r = d.route;
   if (!r) return "";
   const P = rmProjector(r.view), H = P.h;
-  const lens = r.lens, inLens = new Set(lens ? lens.stops : []);
+  // 放大圈（可以有多個）：圈內景點用放大後的位置
+  const lenses = (r.lenses || (r.lens ? [r.lens] : [])).map((ln, li) => {
+    const c = P.p(ln.center);
+    return { ...ln, li, c, t: (ll) => { const q = P.p(ll); return [ln.at[0] + (q[0] - c[0]) * ln.m, ln.at[1] + (q[1] - c[1]) * ln.m]; }, legs: "" };
+  });
+  const lensOf = {};
+  lenses.forEach((L) => L.stops.forEach((n) => { lensOf[n] = L; }));
   const pos = {}, lpos = {};
   r.stops.forEach((st, i) => { pos[i + 1] = P.p(st.ll); });
-  const mainKeys = r.stops.map((_, i) => i + 1).filter((n) => !inLens.has(n));
+  const mainKeys = r.stops.map((_, i) => i + 1).filter((n) => !lensOf[n]);
   relax(pos, mainKeys);
   r.stops.forEach((st, i) => { if (st.nudge) { pos[i + 1][0] += st.nudge[0]; pos[i + 1][1] += st.nudge[1]; } });
-
-  // 放大圈：圈內景點用放大後的位置
-  let L = null;
-  if (lens) {
-    const c = P.p(lens.center);
-    L = { c, at: lens.at, m: lens.m, r: lens.r, t: (ll) => { const q = P.p(ll); return [lens.at[0] + (q[0] - c[0]) * lens.m, lens.at[1] + (q[1] - c[1]) * lens.m]; } };
-    lens.stops.forEach((n) => { lpos[n] = L.t(r.stops[n - 1].ll); });
-    relax(lpos, lens.stops);
-  }
+  lenses.forEach((L) => {
+    const lp = {};
+    L.stops.forEach((n) => { lp[n] = L.t(r.stops[n - 1].ll); });
+    relax(lp, L.stops);
+    Object.assign(lpos, lp);
+  });
 
   // 起點、終點、途中
   const first = r.path[0][1], last = r.path[r.path.length - 1][1];
   const kindOf = (n) => (n === last ? "end" : n === first ? "start" : "mid");
 
   // 路線
-  let legsMain = "", legsLens = "";
+  let legsMain = "";
   const used = new Set();
   for (let i = 1; i < r.path.length; i++) {
     const a = r.path[i - 1][1], [mode, b, bendOpt] = r.path[i];
     used.add(mode);
     const bend = bendOpt == null ? 0.14 : bendOpt;
-    if (inLens.has(a) && inLens.has(b)) legsLens += legSvg(lpos[a], lpos[b], mode, bend);
-    else {
-      // 進出放大圈的路線（例如渡輪）：主圖畫到實際位置，圈內也畫一段，看得出從哪個港口上岸
-      const pa = inLens.has(a) ? P.p(r.stops[a - 1].ll) : pos[a], pb = inLens.has(b) ? P.p(r.stops[b - 1].ll) : pos[b];
-      legsMain += legSvg(pa, pb, mode, bend);
-      if (L && lens.stubs) legsLens += legSvg(inLens.has(a) ? lpos[a] : L.t(r.stops[a - 1].ll), inLens.has(b) ? lpos[b] : L.t(r.stops[b - 1].ll), mode, bend);
-    }
+    const La = lensOf[a], Lb = lensOf[b];
+    if (La && La === Lb) { La.legs += legSvg(lpos[a], lpos[b], mode, bend); continue; }
+    // 進出放大圈的路線：主圖畫到實際位置；渡輪這類（stubs）在圈內也畫一段，看得出從哪個港口上岸
+    legsMain += legSvg(La ? P.p(r.stops[a - 1].ll) : pos[a], Lb ? P.p(r.stops[b - 1].ll) : pos[b], mode, bend);
+    [La, Lb].forEach((L) => {
+      if (L && L.stubs) L.legs += legSvg(lensOf[a] === L ? lpos[a] : L.t(r.stops[a - 1].ll), lensOf[b] === L ? lpos[b] : L.t(r.stops[b - 1].ll), mode, bend);
+    });
   }
 
   const island = ringPath(GEO_PTS.jeju, P.p), udo = ringPath(GEO_PTS.udo, P.p);
   const halla = P.p([33.3617, 126.5292]);
   const showHalla = halla[0] > 20 && halla[0] < RM_W - 20 && halla[1] > 20 && halla[1] < H - 20 && !r.hideHalla;
 
-  // 全島小地圖（右下角），框出這張圖的範圍
+  // 全島小地圖（預設右下角），框出這張圖的範圍
   const mini = rmProjector({ n: 33.58, s: 33.18, w: 126.14, e: 126.98 });
   const ms = 78 / RM_W, mx = r.miniAt ? r.miniAt[0] : RM_W - 86, my = r.miniAt ? r.miniAt[1] : H - mini.h * ms - 8;
   const v = r.view, a0 = mini.p([v.n, v.w]), a1 = mini.p([v.s, v.e]);
-  const miniSvg = `<g class="rm-mini" transform="translate(${f1(mx)} ${f1(my)}) scale(${ms})">
+  const miniSvg = r.noMini ? "" : `<g class="rm-mini" transform="translate(${f1(mx)} ${f1(my)}) scale(${ms})">
       <rect x="-14" y="-14" width="${RM_W + 28}" height="${mini.h + 28}" rx="30" class="rm-mini-bg"/>
       <path d="${ringPath(GEO_PTS.jeju, mini.p)}" class="rm-mini-land"/>
       <rect x="${f1(Math.max(a0[0], -6))}" y="${f1(Math.max(a0[1], -6))}" width="${f1(Math.min(a1[0], RM_W + 6) - Math.max(a0[0], -6))}" height="${f1(Math.min(a1[1], mini.h + 6) - Math.max(a0[1], -6))}" class="rm-mini-box"/>
     </g>`;
 
-  let lensSvg = "";
-  if (L) {
-    const cid = `rmclip-${di}`;
-    const lt = (ll) => L.t(ll);
-    lensSvg = `
-      <circle cx="${f1(L.c[0])}" cy="${f1(L.c[1])}" r="${f1(L.r / L.m + 3)}" class="rm-lens-src"/>
+  const lensSvg = lenses.map((L) => {
+    const cid = `rmclip-${di}-${L.li}`;
+    return `
+      <circle cx="${f1(L.c[0])}" cy="${f1(L.c[1])}" r="${f1(Math.min(L.r / L.m + 3, 22))}" class="rm-lens-src"/>
       <path d="M${f1(L.c[0])} ${f1(L.c[1])}L${f1(L.at[0])} ${f1(L.at[1])}" class="rm-lens-link"/>
       <clipPath id="${cid}"><circle cx="${L.at[0]}" cy="${L.at[1]}" r="${L.r}"/></clipPath>
       <circle cx="${L.at[0]}" cy="${L.at[1]}" r="${L.r}" class="rm-lens-bg"/>
-      <g clip-path="url(#${cid})"><rect x="${L.at[0] - L.r}" y="${L.at[1] - L.r}" width="${2 * L.r}" height="${2 * L.r}" class="rm-sea"/><path d="${ringPath(GEO_PTS.udo, lt)}" class="rm-land"/><path d="${ringPath(GEO_PTS.jeju, lt)}" class="rm-land"/>${legsLens}</g>
+      <g clip-path="url(#${cid})"><rect x="${L.at[0] - L.r}" y="${L.at[1] - L.r}" width="${2 * L.r}" height="${2 * L.r}" class="rm-sea"/><path d="${ringPath(GEO_PTS.udo, L.t)}" class="rm-land"/><path d="${ringPath(GEO_PTS.jeju, L.t)}" class="rm-land"/>${L.legs}</g>
       <circle cx="${L.at[0]}" cy="${L.at[1]}" r="${L.r}" class="rm-lens-rim"/>
-      <text x="${L.at[0]}" y="${f1(L.at[1] - L.r - 7)}" text-anchor="middle" class="rm-lens-name">${esc(lens.name)}（放大）</text>`;
-  }
+      <text x="${L.at[0]}" y="${f1(L.at[1] - L.r - 7)}" text-anchor="middle" class="rm-lens-name">${esc(L.name)}（放大）</text>`;
+  }).join("");
 
   const stopsMain = mainKeys.map((n) => stopSvg(r.stops[n - 1], n, pos[n], kindOf(n), di)).join("");
-  const stopsLens = lens ? lens.stops.map((n) => stopSvg(r.stops[n - 1], n, lpos[n], kindOf(n), di)).join("") : "";
+  const stopsLens = lenses.map((L) => L.stops.map((n) => stopSvg(r.stops[n - 1], n, lpos[n], kindOf(n), di)).join("")).join("");
 
   const legend = [...used].filter((m) => RM_MODES[m] && RM_MODES[m].label).map((m) => {
     const md = RM_MODES[m];
